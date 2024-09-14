@@ -65,19 +65,25 @@ No external APIs will be used in this initial implementation. All data will be s
 ### Mockups
 #### Home Page
 ![](HomePage.png)
+It can be found in assets folder
 
 #### City Detail Page
 ![](CityDetailPage.png)
+It can be found in assets folder
 
 #### Itinerary Page
 ![](ItineraryPage.png)
+It can be found in assets folder
 
 #### Login Page
 ![](LoginPage.png)
+It can be found in assets folder
 
 
 ### Data
-![](sqlDiagram.png)
+![](SQLDiagram.png)
+It can be found in assets folder
+
 ### Endpoints
 
 **GET /cities**
