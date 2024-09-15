@@ -1,60 +1,69 @@
 @import "../../styles/global.scss";
 .hero{
-    background-image: linear-gradient(rgb(50, 50, 50, 20%) , rgb(50, 50, 50, 20%)), 
-    url('../../assets/images/sunrise-hero.jpg');
-    background-size: cover;
-    background-position: center;
     display: flex;
     flex-direction: column;
-    height: 66vw;
-    justify-content: flex-start;
-    color: #ffffff;
-    @include tablet{
-        max-height: 58vw;
-        background-position: bottom;
-    }
-    @include desktop{
-        max-height: 62vw;
-    }
-    &__quote{
-        padding: 2rem  1rem;
-        margin: 0rem;
+    &__item{
+        background-image: linear-gradient(rgb(50, 50, 50, 20%) , rgb(50, 50, 50, 20%)), 
+        url('../../assets/images/sunrise-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        height: 66vw;
+        justify-content: flex-start;
+        color: #ffffff;
         @include tablet{
-            padding-left: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
+            max-height: 58vw;
+            background-position: bottom;
         }
         @include desktop{
-            padding-left: 6rem;
+            max-height: 62vw;
         }
-        &-firstLine{
+        &-quote{
+            padding: 2rem  1rem;
             margin: 0rem;
-            padding-bottom: .25rem;
-            @include hero-font;
-        }
-        &-secondLine{
-            margin: 0rem;
-            padding-left: 1.75rem;
-            padding-bottom: .25rem;
-            @include hero-font;
-            @include tablet {
-                padding-left: 2.5rem;
-            }
-            @include desktop {
-                padding-left: 4rem;
-            }
-        }
-        &-name{
-            margin: 0rem;
-            padding-left: 10rem;
             @include tablet{
-                padding-left: 17rem;
+                padding-left: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
             }
             @include desktop{
-                padding-left: 29.5rem;
+                padding-left: 6rem;
+            }
+            &-firstLine{
+                margin: 0rem;
+                padding-bottom: .25rem;
+                @include hero-font;
+            }
+            &-secondLine{
+                margin: 0rem;
+                padding-left: 1.75rem;
+                padding-bottom: .25rem;
+                @include hero-font;
+                @include tablet {
+                    padding-left: 2.5rem;
+                }
+                @include desktop {
+                    padding-left: 4rem;
+                }
+            }
+            &-name{
+                margin: 0rem;
+                padding-left: 10rem;
+                @include tablet{
+                    padding-left: 17rem;
+                }
+                @include desktop{
+                    padding-left: 29.5rem;
+                }
             }
         }
+    }
+    &__about{
+        margin: 0rem;
+        padding: 1rem;
+        color: #0065AD;
     }
 }
