@@ -1,0 +1,54 @@
+@import "../../styles/global.scss";
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    @include tablet{
+        padding: 1rem  2rem;
+
+    }
+    &__balance{
+        visibility: hidden;
+        @include tablet{
+            width: 4.2489rem;
+        }
+    }
+    &__logo{
+        display: flex;
+        &-img{
+            width: 200px;
+            @include tablet{
+                width: 300px;
+            }
+        }
+    }
+    &__login1{
+    width: 24px;
+    height:24px;
+    @include tablet{
+        display: none;
+    }
+    &-icon{
+        width: 24px;
+        height:24px;
+    }
+}
+&__login2{
+    display: none;
+    @include tablet{
+        text-decoration: none;
+        background-color: #0095FF;
+        border-radius: 1.25rem;
+        color: #ffffff;
+        padding: .625rem  1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &:hover{
+        background-color: #0065AD ;
+    }
+}
+}
