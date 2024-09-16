@@ -62,8 +62,16 @@
         }
     }
     &__about{
+        background-color: #F4F4F9;
         margin: 0rem;
         padding: 1rem;
-        color: #0065AD;
+        color:#333333;
+        &-title{
+            margin: 0rem;
+        }
+        &-text{
+            margin: 0rem;
+            padding-top: 1rem;
+        }
     }
 }
