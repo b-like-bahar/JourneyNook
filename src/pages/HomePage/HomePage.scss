@@ -25,7 +25,7 @@
         }
 
         &-quote {
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
             margin: 0rem;
 
             @include tablet {
@@ -79,8 +79,11 @@
     &__about {
         background-color: $background-white;
         margin: 0rem;
-        padding: 1rem;
+        padding: 1rem 1.5rem;
         color: $primary-text-color;
+        @include tablet{
+            padding: 1.5rem 2rem;
+        }
 
         &-title {
             margin: 0rem;
@@ -98,10 +101,16 @@
     flex-direction: column;
     padding: 1.5rem 0.25rem;
     color: $primary-text-color;
+    @include tablet{
+        padding: 1.5rem 0.5rem;
+    }
 
     &__title {
         margin: 0rem;
-        padding-left: 1rem;
+        padding-left: 1.5rem;
+        @include tablet{
+            padding-left: 2rem;
+        }
     }
 
     &__scroll {
@@ -110,6 +119,9 @@
         align-items: center;
         overflow: hidden;
         padding: 0rem 1.25rem;
+        @include tablet{
+            padding: 0rem 1.5rem;
+        }
 
         &-button-left {
             transform: translateY(-50%);
@@ -159,6 +171,9 @@
             width: 200px;
             border-radius: 20px;
             object-fit: cover;
+            @include tablet{
+                width: 250px;
+            }
         }
 
         &-location {
