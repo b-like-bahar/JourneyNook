@@ -13,7 +13,7 @@
         flex-direction: column;
         height: 66vw;
         justify-content: flex-start;
-        color: #ffffff;
+        color: $secondary-text-color;
 
         @include tablet {
             max-height: 58vw;
@@ -77,10 +77,10 @@
     }
 
     &__about {
-        background-color: #f4f4f9;
+        background-color: $background-white;
         margin: 0rem;
         padding: 1rem;
-        color: #333333;
+        color: $primary-text-color;
 
         &-title {
             margin: 0rem;
@@ -119,21 +119,21 @@
             position: absolute;
             width: 40px;
             height: 40px;
-            background-color: white;
-            border: 2px solid black;
+            background-color: $secondary-text-color;
+            border: 2px solid $scroll-black;
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
-            color: #000;
+            color: $scroll-black;
             transition: background-color 0.3s ease, border-color 0.3s ease,
                 color 0.3s ease;
             left: 0px;
 
             &:hover {
-                background-color: #000;
-                border-color: #ffffff;
-                color: #ffffff;
+                background-color: $scroll-black;
+                border-color: $secondary-text-color;
+                color: $secondary-text-color;
             }
 
             &-svg {
@@ -157,21 +157,21 @@
             position: absolute;
             width: 40px;
             height: 40px;
-            background-color: white;
-            border: 2px solid black;
+            background-color: $secondary-text-color;
+            border: 2px solid $scroll-black;
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%) scaleX(-1);
             z-index: 10;
-            color: #000;
+            color: $scroll-black;
             transition: background-color 0.3s ease, border-color 0.3s ease,
                 color 0.3s ease;
             right: 0;
 
             &:hover {
-                background-color: #000;
-                border-color: #ffffff;
-                color: #ffffff;
+                background-color: $scroll-black;
+                border-color: $secondary-text-color;
+                color: $secondary-text-color;
             }
 
             &-svg {
@@ -230,7 +230,7 @@
                 position: absolute;
                 bottom: 0px;
                 left: 10px;
-                color: white;
+                color: $secondary-text-color;
                 width: 80%;
                 z-index: 2;
             }
