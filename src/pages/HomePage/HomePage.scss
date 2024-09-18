@@ -177,15 +177,16 @@
     color: $primary-text-color;
 
     @include tablet {
-        padding: 1.5rem 0.5rem;
+        padding: 2rem 0.5rem;
     }
 
     &__title {
         margin: 0rem;
-        padding-left: 1.5rem;
+        padding: 0rem  1.25rem  1.5rem  1.5rem;
 
         @include tablet {
-            padding-left: 2rem;
+            padding: 0rem 1.5rem 1.5  2rem;
+            
         }
     }
 
@@ -194,10 +195,10 @@
         display: flex;
         align-items: center;
         overflow: hidden;
-        padding: 0rem 1.25rem;
+        padding: 0rem  1.25rem  1rem  1.25rem;
 
         @include tablet {
-            padding: 0rem 1.5rem;
+            padding: 0rem  1.5rem  1rem  1.5rem;
         }
 
         &-button-left {
