@@ -1,6 +1,58 @@
 @import "../../styles/global.scss";
-.footer{
+
+.footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    color: #5C667E;
+    align-items: center;
+    gap: 16px;
+    background-color: $background-beige;
+    padding: 1rem 3rem;
+    @include tablet{
+        padding: 1rem 5rem;
+    }
+    @include desktop{
+        padding: 1rem 7rem;
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+
+        &-img {
+            width: 200px;
+
+            @include tablet {
+                width: 300px;
+            }
+        }
+    }
+
+    &__social {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: $background-beige-border solid 1px;
+        width: 100%;
+        @include tablet{
+            gap: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        &-link {
+            &-img {
+                width: 30px;
+                @include tablet{
+                    width: 40px
+                }
+            }
+        }
+    }
+    &__copyRight{
+        color: #5C667E;
+    }
+
 }
