@@ -83,59 +83,34 @@
     padding: 1.5rem 1.5rem 0.5rem 1.5rem;
     color: $primary-text-color;
 
-    @include tablet {
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-    }
-
     &__title {
         margin: 0rem;
         padding-bottom: 1.5rem;
     }
 
-    &__item{
+    &__item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        @include tablet {
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 20px;
-            // border: #FF8745 solid 3px;
-            // border-radius: 4px;
-            // position: relative;
-        }
-        &-visual{
+        justify-content: center;
+
+        &-visual {
             display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
             width: 100%;
             height: 100%;
-            @include tablet{
-                width: 500px;
-                // &:before {
-                //     content: "";
-                //     position: absolute;
-                //     top: 0px;
-                //     right: 0px;
-                //     width: 100%;
-                //     height: 100%;
-                //     background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-                //     border-radius: 4px;
-                //     z-index: 1;
-                // }
-            }
-            &-img{
+
+            &-img {
                 object-fit: cover;
                 border-radius: 4px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, .7);
                 width: 100%;
                 height: auto;
-                @include tablet{
-                    width: 400px;
-                }
             }
-            &-border{
+
+            &-border {
                 border: #FF8745 solid 3px;
                 border-radius: 4px;
                 z-index: 1;
@@ -144,29 +119,19 @@
                 height: 99%;
                 top: -12px;
                 left: -12px;
-                @include tablet{
-                    display: none;
-                }
             }
 
         }
+
         &-description {
             padding-top: 1.5rem;
-            @include tablet {
-                width: 500px;
-                // flex:1;
-                // position: absolute;
-                // top: 0px;
-                // left: 400px;
-                // z-index: 1;
-            }
-            &-text1 , &-text2{
+
+            &-text1,
+            &-text2 {
                 margin: 0rem;
                 padding-bottom: 1rem;
-                // border: #FF8745 solid 3px;
-                // width: ;
             }
-    }
+        }
     }
 }
 
@@ -182,11 +147,11 @@
 
     &__title {
         margin: 0rem;
-        padding: 0rem  1.25rem  1.5rem  1.5rem;
+        padding: 0rem 1.25rem 1.5rem 1.5rem;
 
         @include tablet {
-            padding: 0rem 1.5rem 1.5  2rem;
-            
+            padding: 0rem 1.5rem 1.5 2rem;
+
         }
     }
 
@@ -195,10 +160,10 @@
         display: flex;
         align-items: center;
         overflow: hidden;
-        padding: 0rem  1.25rem  1rem  1.25rem;
+        padding: 0rem 1.25rem 1rem 1.25rem;
 
         @include tablet {
-            padding: 0rem  1.5rem  1rem  1.5rem;
+            padding: 0rem 1.5rem 1rem 1.5rem;
         }
 
         &-button-left {
@@ -267,3 +232,51 @@
         }
     }
 }
+
+.about {
+    @media screen and (min-width: 768px) {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        &__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        &__item-visual {
+            width: 60vw;
+            position: relative;
+            margin-bottom: -80px; // Image overlaps the text
+            // z-index: 2;
+            right: 50px;
+            &-img {
+                border-radius: 8px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__item-description {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 8px;
+            z-index: 1;
+            width: 400px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            left: 100px;
+            top: -70px;
+            // aspect-ratio: 1/1;
+            &-text1,
+            &-text2 {
+                padding: 0rem 2rem 1rem  2rem !important;
+            }
+
+        }
+    }
+}
+
+
+
