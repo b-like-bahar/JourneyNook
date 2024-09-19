@@ -9,12 +9,12 @@ function CityDetailPage() {
                 </h1>
                 <div className="city__landmark">
                     <img className="city__landmark-img" src={HagiaSophiaIstanbul}/>
-                    <h3 className="city__landmark-name">
+                    <h2 className="city__landmark-name">
                         Hagia Sophia
-                    </h3>
+                    </h2>
                     <ul className="city__landmark-info">
                         <li className="city__landmark-info-category  city__landmark-info-detail">
-                            Category: Historical Monument (Church, Mosque, Museum)
+                            Category: Historical Monument
                         </li>
                         <li className="city__landmark-info-description  city__landmark-info-detail">
                             Description: Constructed in 537 AD, Hagia Sophia has served as a cathedral, mosque, and museum.
@@ -30,7 +30,7 @@ function CityDetailPage() {
                             Entry Fee: Free entry (donations appreciated)
                         </li>
                         <li className="city__landmark-info-nearbyAttraction  city__landmark-info-detail">
-                            Blue Mosque (5 min), Topkapi Palace (10 min), Basilica Cistern (2 min)
+                            Nearby Attractions: Blue Mosque, Topkapi Palace, Basilica Cistern
                         </li>
                         <li className="city__landmark-info-travelTips  city__landmark-info-detail">
                             Travel Tips: Modest dress required, remove shoes inside, no flash photography
