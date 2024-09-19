@@ -1,61 +1,194 @@
 @import "../../styles/global.scss";
-.city{
-    padding: 1rem 1.5rem 0.5rem 1.5rem;
+
+.city {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
     color: $primary-text-color;
     background-color: $background-white;
-    &__name{
+
+    @include tablet {
+        padding: 2rem 2rem 1.5rem 2rem;
+    }
+
+    &__name {
         margin: 0rem;
         padding-bottom: 1rem;
-    }
-    &__landmark{
-        display:flex ;
-        flex-direction: column;
-        &-img{
-            border-radius: 8px;
+
+        @include tablet {
+            padding-bottom: 1.5rem;
         }
-        &-name{
+
+        @include tablet {
+            padding-bottom: 3rem;
+        }
+    }
+
+    &__landmark {
+        display: flex;
+        flex-direction: column;
+
+        &-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include tablet {
+                padding: 0rem 3rem;
+            }
+
+            @include desktop {
+                padding: 0rem 6rem;
+            }
+
+            &-img {
+                border-radius: 8px;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        &-name {
             margin: 0rem;
             padding-top: 1rem;
+
+            @include tablet {
+                padding: 1.5rem 3rem;
+            }
+
+            @include desktop {
+                padding: 1.5rem 6rem;
+            }
         }
-        &-info{
+
+        &-info {
             list-style-type: none;
-            padding: 1rem  0rem  0rem  0rem;
-            margin:0;
-            max-width: 48.5rem ;
-            &-detail{
+            padding: 1rem 0rem 0rem 0rem;
+            margin: 0;
+            max-width: 48.5rem;
+
+            @include tablet {
+                padding: 0rem 3rem;
+            }
+
+            @include desktop {
+                padding: 0rem 6rem;
+            }
+
+            &-detail {
                 padding-bottom: 1rem;
                 font-weight: 600;
             }
         }
     }
 }
-.attractions{
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+
+.attractions {
+    padding: 1.5rem 0rem 2rem  0rem;
     color: $primary-text-color;
-    &__title{
+
+    &__title {
         margin: 0rem;
-        padding-bottom: 1rem;
+        padding: 0rem 1.5rem 1.5rem 1.5rem;
+
+        @include tablet {
+            padding: 0.5rem 2rem 3rem 2rem;
+        }
     }
-    &__pics{
-        padding-left: 0rem;
+
+    &__scroll {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 0rem 1.25rem 1rem 1.25rem;
+
+        @include tablet {
+            padding: 0rem 1.5rem 1rem 1.5rem;
+            justify-content: center;
+        }
+
+        &-button-left {
+            transform: translateY(-50%);
+            left: 0px;
+            @include scroll-buttons;
+            &{top: calc(50% - 25px);}
+            @include tablet{
+                display: none;
+            }
+        }
+
+        &-button-right {
+            transform: translateY(-50%) scaleX(-1);
+            right: 0px;
+            @include scroll-buttons;
+            &{top: calc(50% - 25px);}
+            @include tablet{
+                display: none;
+            }
+        }
+    }
+
+    &__pics {
+        padding: 1rem  0rem;
         margin: 0rem;
-        display:flex ;
+        display: flex;
         flex-direction: row;
         gap: 16px;
         flex-wrap: nowrap;
-        &-item{
-            display:flex ;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        
+        @include tablet {
+            gap: 48px;
+        }
+        @include desktop {
+            gap: 32px
+        }
+        
+        &-divider {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            
+            @include tablet {
+                flex-direction: column;
+                gap: 48px;
+            }
+            @include desktop {
+                flex-direction: row;
+                gap: 32px
+            }
+            
+        }
+        
+        &-item {
+            display: flex;
             flex-direction: column;
             justify-content: flex-start;
             border-radius: 12px;
-            &-img{
-                width: 200px;
+            transition: text-decoration 1s ease, 
+            opacity 0.3s ease;
+            &:hover{
+                text-decoration: underline;
+                opacity: 80%;
+            }
+            
+            &-img {
+                width: 220px;
                 border-radius: 8px;
+
+                @include tablet {
+                    width: 320px;
+                }
+                @include desktop {
+                    width: 280px;
+                }
+            }
+
+            &-location {
+                margin: 0rem;
+                padding-top: 0.5rem;
             }
         }
     }
 }
-
-
-
-
