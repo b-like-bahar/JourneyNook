@@ -1,6 +1,57 @@
 import "./CityDetailPage.scss"
+import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
+import { useRef, useState, useEffect } from 'react';
+import { ReactSVG } from "react-svg";
 import HagiaSophiaIstanbul from "../../assets/images/Hagia-Sophia-Istanbul.jpg"
+
+
 function CityDetailPage() {
+    const landmarkListRef = useRef(null);
+    const [showLeftButton, setShowLeftButton] = useState(false);
+    const [showRightButton, setShowRightButton] = useState(true);
+
+    const scrollLeft = () => {
+        if (landmarkListRef.current) {
+            landmarkListRef.current.scrollBy({
+                top: 0,
+                left: -300,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const scrollRight = () => {
+        if (landmarkListRef.current) {
+            landmarkListRef.current.scrollBy({
+                top: 0,
+                left: 300,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const checkScrollPosition = () => {
+        if (landmarkListRef.current) {
+            const scrollLeftValue = landmarkListRef.current.scrollLeft;
+            const maxScrollLeft = landmarkListRef.current.scrollWidth - landmarkListRef.current.clientWidth;
+
+            setShowLeftButton(scrollLeftValue > 0);
+            setShowRightButton(scrollLeftValue < maxScrollLeft);
+        }
+    };
+
+    useEffect(() => {
+        const listRef = landmarkListRef.current;
+        if (listRef) {
+            listRef.addEventListener('scroll', checkScrollPosition);
+        }
+        return () => {
+            if (listRef) {
+                listRef.removeEventListener('scroll', checkScrollPosition);
+            }
+        };
+    }, []);
+
     return (
         <>
             <div className="city">
@@ -8,7 +59,9 @@ function CityDetailPage() {
                     Istanbul
                 </h1>
                 <div className="city__landmark">
-                    <img className="city__landmark-img" src={HagiaSophiaIstanbul}/>
+                    <div className="city__landmark-container">
+                        <img className="city__landmark-container-img" src={HagiaSophiaIstanbul} />
+                    </div>
                     <h2 className="city__landmark-name">
                         Hagia Sophia
                     </h2>
@@ -42,32 +95,48 @@ function CityDetailPage() {
                 <h2 className="attractions__title">
                     Places to visit
                 </h2>
-                <ul className="attractions__pics">
-                    <li className="attractions__pics-item">
-                        <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                        <h2 className="attractions__pics-item-location">
-                            Topkapi Palace
-                        </h2>
-                    </li>
-                    <li className="attractions__pics-item">
-                        <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul}/>
-                        <h2 className="attractions__pics-item-location">
-                            Blue Mosque
-                        </h2>
-                    </li>
-                    <li className="attractions__pics-item">
-                        <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                        <h2 className="attractions__pics-item-location">
-                            Basilica Cistern
-                        </h2>
-                    </li>
-                    <li className="attractions__pics-item">
-                        <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                        <h2 className="attractions__pics-item-location">
-                            Grand Bazaar
-                        </h2>
-                    </li>
-                </ul>
+                <div className="attractions__scroll">
+                    {showLeftButton && (
+                        <button className="attractions__scroll-button-left" onClick={scrollLeft}>
+                            <ReactSVG className="attractions__scroll-button-left-svg" src={scrollArrowIcon} />
+                        </button>
+                    )}
+                    <ul className="attractions__pics" ref={landmarkListRef}>
+                        <div className="attractions__pics-divider">
+                            <li className="attractions__pics-item">
+                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
+                                <h2 className="attractions__pics-item-location">
+                                    Topkapi Palace
+                                </h2>
+                            </li>
+                            <li className="attractions__pics-item">
+                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
+                                <h2 className="attractions__pics-item-location">
+                                    Blue Mosque
+                                </h2>
+                            </li>
+                        </div>
+                        <div className="attractions__pics-divider">
+                            <li className="attractions__pics-item">
+                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
+                                <h2 className="attractions__pics-item-location">
+                                    Basilica Cistern
+                                </h2>
+                            </li>
+                            <li className="attractions__pics-item">
+                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
+                                <h2 className="attractions__pics-item-location">
+                                    Grand Bazaar
+                                </h2>
+                            </li>
+                        </div>
+                    </ul>
+                    {showRightButton && (
+                        <button className="attractions__scroll-button-right" onClick={scrollRight}>
+                            <ReactSVG className="attractions__scroll-button-right-svg" src={scrollArrowIcon} />
+                        </button>
+                    )}
+                </div>
             </div>
         </>
     )
