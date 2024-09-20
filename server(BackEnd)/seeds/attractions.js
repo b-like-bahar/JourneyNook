@@ -7,7 +7,7 @@ export async function seed(knex) {
   await knex('attractions').del();
   await knex('attractions').insert([
       {
-        id: 1,
+        id: 6,
         city_id: 2,
         attraction_name: 'La Sagrada Família',
         category: 'Basilica',
@@ -20,7 +20,7 @@ export async function seed(knex) {
         attraction_image_path: '../public/images/barcelona/Sagrada-Familia.png'
       },
       {
-        id: 2,
+        id: 7,
         city_id: 2,
         attraction_name: 'Park Güell',
         category: 'Park',
@@ -33,7 +33,7 @@ export async function seed(knex) {
         attraction_image_path: '../public/images/barcelona/Park-Güell.png'
       },
       {
-        id: 3,
+        id: 8,
         city_id: 2,
         attraction_name: 'Casa Batlló',
         category: 'Historical House',
@@ -46,7 +46,7 @@ export async function seed(knex) {
         attraction_image_path: '../public/images/barcelona/Casa-Batlló.png'
       },
       {
-        id: 4,
+        id: 9,
         city_id: 2,
         attraction_name: 'La Rambla',
         category: 'Street/Promenade',
@@ -59,7 +59,7 @@ export async function seed(knex) {
         attraction_image_path: '../public/images/barcelona/La-Rambla.png'
       },
       {
-        id: 5,
+        id: 10,
         city_id: 2,
         attraction_name: 'Camp Nou',
         category: 'Stadium',
