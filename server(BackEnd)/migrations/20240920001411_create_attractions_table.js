@@ -12,7 +12,7 @@ export function up(knex) {
             .inTable('cities')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
-        table.string('name').notNullable();
+        table.string('attraction_name').notNullable();
         table.string('category').notNullable();
         table.text('description').notNullable();
         table.string('best_time_to_visit').notNullable();
