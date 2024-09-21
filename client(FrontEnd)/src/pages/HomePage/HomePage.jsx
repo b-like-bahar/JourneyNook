@@ -1,24 +1,26 @@
-import "./HomePage.scss"
-import cancunImage from '../../assets/images/Cancun-Mexico.png';
-import barcelonaImage from '../../assets/images/Barcelona-Spain.png';
-import istanbulImage from '../../assets/images/Istanbul-Turkey.png';
-import londonImage from '../../assets/images/London-England.png';
-import moscowImage from '../../assets/images/Moscow-Russia.png';
-import parisImage from '../../assets/images/Paris-France.png';
-import rioImage from '../../assets/images/Rio-Brasil.png';
-import romeImage from '../../assets/images/Rome-Italy.png';
-import shanghaiImage from '../../assets/images/Shanghai-China.png';
-import sydneyImage from '../../assets/images/Sydney-Australia.png';
+import { useRef, useState, useEffect } from 'react';
+import { Api } from "../../../../client(FrontEnd)/src/utils/utils"
+import { ReactSVG } from "react-svg";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import aboutImage from '../../assets/images/about-us-pic.jpg';
-import { useRef, useState, useEffect } from 'react';
-import { ReactSVG } from "react-svg";
+import "./HomePage.scss"
 
 
 function HomePage() {
-    const destinationListRef = useRef(null);
+    const api = new Api();
+
+    const [cities, setCities] = useState([])
     const [showLeftButton, setShowLeftButton] = useState(false);
     const [showRightButton, setShowRightButton] = useState(true);
+    const destinationListRef = useRef(null);
+
+    useEffect(() =>{
+        const getCities = async () => {
+            const allCities = await api.getAllCities();
+            setCities(allCities);
+        };
+        getCities();
+    }, []);
 
     const scrollLeft = () => {
         if (destinationListRef.current) {
@@ -112,66 +114,18 @@ function HomePage() {
                         </button>
                     )}
                     <ul className="destinations__pics" ref={destinationListRef}>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={cancunImage} />
+                        {cities.map((city) => (
+                        <li key={city.id} className="destinations__pics-item">
+                            <img 
+                            className="destinations__pics-item-img" 
+                            src={city.city_image_path}
+                            alt={city.city_name}
+                            />
                             <h2 className="destinations__pics-item-location">
-                                Cancun, Mexico
+                                {city.city_name}, {city.country}
                             </h2>
                         </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={barcelonaImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Barcelona, Spain
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={istanbulImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Istanbul, Turkey
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={londonImage} />
-                            <h2 className="destinations__pics-item-location">
-                                London, England
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={moscowImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Moscow, Russia
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={parisImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Paris, France
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={rioImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Rio, Brasil
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={romeImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Rome, Italy
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={shanghaiImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Shanghai, China
-                            </h2>
-                        </li>
-                        <li className="destinations__pics-item">
-                            <img className="destinations__pics-item-img" src={sydneyImage} />
-                            <h2 className="destinations__pics-item-location">
-                                Sydney, Australia
-                            </h2>
-                        </li>
+                        ))}
                     </ul>
                     {showRightButton && (
                         <button className="destinations__scroll-button-right" onClick={scrollRight}>
