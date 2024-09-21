@@ -46,7 +46,7 @@ export async function seed(knex) {
       id: 7,
       city_name: 'Rio de Janeiro',
       country: 'Brazil',
-      city_image_path: 'http://localhost:8080/images/riodejaneiro/rio-de-janeiro-brazil.png'
+      city_image_path: 'http://localhost:8080/images/rio-de-janeiro/rio-de-janeiro-brazil.png'
     },
     {
       id: 8,
