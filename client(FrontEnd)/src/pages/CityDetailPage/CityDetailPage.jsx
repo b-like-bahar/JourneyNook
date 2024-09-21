@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { Api } from "../../../../client(FrontEnd)/src/utils/utils"
+import { Api } from "../../../../client(FrontEnd)/src/utils/utils.js"
 import { Link } from "react-router-dom";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
+import { scrollToTop } from '../../utils/utilsFunctions.js';
 import "./CityDetailPage.scss"
 
 
@@ -32,6 +33,7 @@ function CityDetailPage() {
             } else {
                 setSelectedAttraction(fetchedAttractions[0]);
             }
+            scrollToTop();
         };
         getCityAttractions();
     }, [cityId, attractionId]);
