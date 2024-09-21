@@ -1,14 +1,45 @@
-import "./CityDetailPage.scss"
-import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { useRef, useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { Api } from "../../../../client(FrontEnd)/src/utils/utils"
+import { Link } from "react-router-dom";
+import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
-import HagiaSophiaIstanbul from "../../assets/images/Hagia-Sophia-Istanbul.jpg"
+import "./CityDetailPage.scss"
 
 
 function CityDetailPage() {
-    const landmarkListRef = useRef(null);
+    const { cityId, attractionId } = useParams();
+    const api = new Api();
+    const location = useLocation();
+
+
+    const { cityName, country } = location.state || {};
+
+    const [attractions, setAttractions] = useState([]);
+    const [selectedAttraction, setSelectedAttraction] = useState({});
     const [showLeftButton, setShowLeftButton] = useState(false);
     const [showRightButton, setShowRightButton] = useState(true);
+    const landmarkListRef = useRef(null);
+
+    useEffect(() => {
+        const getCityAttractions = async () => {
+
+            const fetchedAttractions = await api.getAttractionsGivenCityId(cityId);
+            setAttractions(fetchedAttractions);
+
+            if (attractionId) {
+                getAttractionDetails(attractionId)
+            } else {
+                setSelectedAttraction(fetchedAttractions[0]);
+            }
+        };
+        getCityAttractions();
+    }, [cityId, attractionId]);
+
+    const getAttractionDetails = async (id) => {
+        const attractionDetails = await api.getAttractionDetails(id);
+        setSelectedAttraction(attractionDetails);
+    };
 
     const scrollLeft = () => {
         if (landmarkListRef.current) {
@@ -51,42 +82,44 @@ function CityDetailPage() {
             }
         };
     }, []);
-
+    
     return (
         <>
             <div className="city">
                 <h1 className="city__name">
-                    Istanbul
+                    {cityName}, {country}
                 </h1>
                 <div className="city__landmark">
                     <div className="city__landmark-container">
-                        <img className="city__landmark-container-img" src={HagiaSophiaIstanbul} />
+                        <img className="city__landmark-container-img"
+                            src={selectedAttraction.attraction_image_path}
+                            alt={selectedAttraction.attraction_name}
+                        />
                     </div>
                     <h2 className="city__landmark-name">
-                        Hagia Sophia
+                        {selectedAttraction.attraction_name}
                     </h2>
                     <ul className="city__landmark-info">
                         <li className="city__landmark-info-category  city__landmark-info-detail">
-                            Category: Historical Monument
+                            Category: {selectedAttraction.category}
                         </li>
                         <li className="city__landmark-info-description  city__landmark-info-detail">
-                            Description: Constructed in 537 AD, Hagia Sophia has served as a cathedral, mosque, and museum.
-                            Known for its massive dome and Byzantine mosaics, it remains a symbol of religious and cultural transformation over centuries.
+                            Description: {selectedAttraction.description}
                         </li>
                         <li className="city__landmark-info-bestTimeToVisit  city__landmark-info-detail">
-                            Best Time to Visit: Early morning or late afternoon to avoid crowds; sunset for the best light
+                            Best Time to Visit: {selectedAttraction.best_time_to_visit}
                         </li>
                         <li className="city__landmark-info-hours  city__landmark-info-detail">
-                            Opening Hours: Open daily, closed during prayer times
+                            Opening Hours: {selectedAttraction.hours}
                         </li>
                         <li className="city__landmark-info-fee  city__landmark-info-detail">
-                            Entry Fee: Free entry (donations appreciated)
+                            Entrance Fee: {selectedAttraction.fee}
                         </li>
                         <li className="city__landmark-info-nearbyAttraction  city__landmark-info-detail">
-                            Nearby Attractions: Blue Mosque, Topkapi Palace, Basilica Cistern
+                            Nearby Attractions: {selectedAttraction.nearby_attraction}
                         </li>
                         <li className="city__landmark-info-travelTips  city__landmark-info-detail">
-                            Travel Tips: Modest dress required, remove shoes inside, no flash photography
+                            Travel Tips: {selectedAttraction.travel_tips}
                         </li>
                     </ul>
                 </div>
@@ -102,34 +135,29 @@ function CityDetailPage() {
                         </button>
                     )}
                     <ul className="attractions__pics" ref={landmarkListRef}>
-                        <div className="attractions__pics-divider">
-                            <li className="attractions__pics-item">
-                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                                <h2 className="attractions__pics-item-location">
-                                    Topkapi Palace
-                                </h2>
-                            </li>
-                            <li className="attractions__pics-item">
-                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                                <h2 className="attractions__pics-item-location">
-                                    Blue Mosque
-                                </h2>
-                            </li>
-                        </div>
-                        <div className="attractions__pics-divider">
-                            <li className="attractions__pics-item">
-                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                                <h2 className="attractions__pics-item-location">
-                                    Basilica Cistern
-                                </h2>
-                            </li>
-                            <li className="attractions__pics-item">
-                                <img className="attractions__pics-item-img" src={HagiaSophiaIstanbul} />
-                                <h2 className="attractions__pics-item-location">
-                                    Grand Bazaar
-                                </h2>
-                            </li>
-                        </div>
+                        {attractions
+                            ?.filter((attraction) => attraction.id !== selectedAttraction?.id)
+                            .map((attraction) => (
+                                <li
+                                    key={attraction.id}
+                                    className="attractions__pics-item"
+                                    onClick={() => getAttractionDetails(attraction.id)}
+                                >
+                                    <Link 
+                                    to={`/city/${cityId}/attractions/${attraction.id}`}
+                                    state={{ cityName, country }}
+                                    >
+                                        <img
+                                            className="attractions__pics-item-img"
+                                            src={attraction.attraction_image_path}
+                                            alt={attraction.attraction_name}
+                                        />
+                                        <h2 className="attractions__pics-item-location">
+                                            {attraction.attraction_name}
+                                        </h2>
+                                    </Link>
+                                </li>
+                            ))}
                     </ul>
                     {showRightButton && (
                         <button className="attractions__scroll-button-right" onClick={scrollRight}>
