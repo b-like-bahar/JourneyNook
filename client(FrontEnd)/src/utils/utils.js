@@ -19,7 +19,7 @@ class Api {
     async getAttractionsGivenCityId(cityId) {
         try {
             const response = await axios.get(
-                `${baseUrl}/cities/${cityId}/attractions`
+                `${this.baseUrl}/cities/${cityId}/attractions`
             );
             return response.data;
         } catch (err) {
@@ -31,7 +31,7 @@ class Api {
 
     async getAttractionDetails(attractionId) {
         try {
-            const response = await axios.get(`${baseUrl}/attractions/${attractionId}`);
+            const response = await axios.get(`${this.baseUrl}/attractions/${attractionId}`);
             return response.data;
         } catch (err) {
             console.log(`Failed to get attraction details of the attraction with id: ${attractionId}.`);
