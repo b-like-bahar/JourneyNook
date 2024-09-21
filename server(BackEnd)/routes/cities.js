@@ -1,9 +1,10 @@
 import express from "express";
-import getCities from "../controllers/cities-controllers.js";
+import * as cityController from "../controllers/cities-controllers.js";
 
 const router = express.Router();
 
 router
-    .get('/', getCities)
+    .get('/', cityController.getCities)
+    .get('/:cityId', cityController.getSingleCity)
 
 export default router;
