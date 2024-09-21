@@ -2,6 +2,7 @@ import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
 import citiesRouter from "./routes/cities.js";
+import attractionsRouter from "./routes/attractions.js"
 
 const app = express();
 const{ PORT, CORS_ORIGIN } = process.env;
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use('/images', express.static("public/images"));
 
 app.use('/cities', citiesRouter);
-
+app.use('/attractions', attractionsRouter);
 
 app.use('*', (_req, res) => {
     res.status(404).json({ error: 'Route not found' });
