@@ -6,5 +6,6 @@ const router = express.Router();
 router
     .get('/', cityController.getCities)
     .get('/:cityId', cityController.getSingleCity)
+    .get('/:cityId/attractions', cityController.getAttractionsWithCityId)
 
 export default router;

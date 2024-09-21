@@ -34,7 +34,31 @@ const getSingleCity = async (req, res) => {
 
 }
 
+const getAttractionsWithCityId = async (req, res) => {
+    try{
+        const attractionList = await knex("attractions")
+        .select("attractions.*", "cities.city_name as city_name")
+        .leftJoin("cities", "attractions.city_id", "cities.id")
+        .where({ city_id: req.params.cityId, })
+
+        if (attractionList.length === 0) {
+            res.status(404).json({
+                error: `No attractions found for city with id: ${req.params.cityId}`,
+            });
+        } else {
+            res.status(200).json(attractionList)
+        }
+
+    } catch (err) {
+        res.status(500).json({
+            error: `Error getting attraction list given city id:${req.params.cityId} from database`
+        })
+
+    }
+}
+
 export {
     getCities,
     getSingleCity,
+    getAttractionsWithCityId
 }
