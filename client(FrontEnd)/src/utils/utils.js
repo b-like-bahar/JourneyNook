@@ -16,6 +16,18 @@ class Api {
         }
     }
 
+    async getAttractionsGivenCityId(cityId) {
+        try {
+            const response = await axios.get(
+                `${baseUrl}/cities/${cityId}/attractions`
+            );
+            return response.data;
+        } catch (err) {
+            console.log(
+                `Failed to get all attractions with city id: ${cityId}.`
+            );
+        }
+    }
 }
 
 export { Api, baseUrl };
