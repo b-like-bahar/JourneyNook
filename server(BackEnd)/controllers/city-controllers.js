@@ -10,7 +10,7 @@ const getCities = async (req, res) => {
         res.status(200).json(allCities);
     } catch (err) {
         res.status(500).json({ 
-            message: `Failed to retrieve all cities: ${err.message}` })
+            error: "Failed to retrieve all cities" })
     }
 }
 
