@@ -82,7 +82,15 @@ function CityDetailPage() {
             }
         };
     }, []);
-    
+
+    const arrayDivider = (arr, size) => {
+        const result = [];
+        for (let i = 0; i < arr.length; i += size) {
+            result.push(arr.slice(i, i + size));
+        }
+        return result;
+    };
+
     return (
         <>
             <div className="city">
@@ -135,29 +143,34 @@ function CityDetailPage() {
                         </button>
                     )}
                     <ul className="attractions__pics" ref={landmarkListRef}>
-                        {attractions
-                            ?.filter((attraction) => attraction.id !== selectedAttraction?.id)
-                            .map((attraction) => (
-                                <li
-                                    key={attraction.id}
-                                    className="attractions__pics-item"
-                                    onClick={() => getAttractionDetails(attraction.id)}
-                                >
-                                    <Link 
-                                    to={`/city/${cityId}/attractions/${attraction.id}`}
-                                    state={{ cityName, country }}
+                        {arrayDivider(
+                            attractions
+                                ?.filter((attraction) => attraction.id !== selectedAttraction?.id), 2
+                        ).map((attractionPair, index) => (
+                            <div key={index} className="attractions__pics-divider">
+                                {attractionPair.map(attraction => (
+                                    <li
+                                        key={attraction.id}
+                                        className="attractions__pics-item"
+                                        onClick={() => getAttractionDetails(attraction.id)}
                                     >
-                                        <img
-                                            className="attractions__pics-item-img"
-                                            src={attraction.attraction_image_path}
-                                            alt={attraction.attraction_name}
-                                        />
-                                        <h2 className="attractions__pics-item-location">
-                                            {attraction.attraction_name}
-                                        </h2>
-                                    </Link>
-                                </li>
-                            ))}
+                                        <Link
+                                            to={`/city/${cityId}/attractions/${attraction.id}`}
+                                            state={{ cityName, country }}
+                                        >
+                                            <img
+                                                className="attractions__pics-item-img"
+                                                src={attraction.attraction_image_path}
+                                                alt={attraction.attraction_name}
+                                            />
+                                            <h2 className="attractions__pics-item-location">
+                                                {attraction.attraction_name}
+                                            </h2>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </div>
+                        ))}
                     </ul>
                     {showRightButton && (
                         <button className="attractions__scroll-button-right" onClick={scrollRight}>
