@@ -155,15 +155,16 @@ function CityDetailPage() {
                                         onClick={() => getAttractionDetails(attraction.id)}
                                     >
                                         <Link
+                                            className="attractions__pics-item-link"
                                             to={`/city/${cityId}/attractions/${attraction.id}`}
                                             state={{ cityName, country }}
                                         >
                                             <img
-                                                className="attractions__pics-item-img"
+                                                className="attractions__pics-item-link-img"
                                                 src={attraction.attraction_image_path}
                                                 alt={attraction.attraction_name}
                                             />
-                                            <h2 className="attractions__pics-item-location">
+                                            <h2 className="attractions__pics-item-link-location">
                                                 {attraction.attraction_name}
                                             </h2>
                                         </Link>

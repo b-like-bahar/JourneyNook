@@ -172,23 +172,27 @@
                 text-decoration: underline;
                 opacity: 80%;
             }
+            &-link{
+                text-decoration: none;
+                color: $primary-text-color;
+                &-img {
+                    width: 220px;
+                    border-radius: 8px;
+    
+                    @include tablet {
+                        width: 320px;
+                    }
+                    @include desktop {
+                        width: 280px;
+                    }
+                }
+    
+                &-location {
+                    margin: 0rem;
+                    padding-top: 0.5rem;
+                }
+            }
             
-            &-img {
-                width: 220px;
-                border-radius: 8px;
-
-                @include tablet {
-                    width: 320px;
-                }
-                @include desktop {
-                    width: 280px;
-                }
-            }
-
-            &-location {
-                margin: 0rem;
-                padding-top: 0.5rem;
-            }
         }
     }
 }
