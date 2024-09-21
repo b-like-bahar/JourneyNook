@@ -28,6 +28,15 @@ class Api {
             );
         }
     }
+
+    async getAttractionDetails(attractionId) {
+        try {
+            const response = await axios.get(`${baseUrl}/attractions/${attractionId}`);
+            return response.data;
+        } catch (err) {
+            console.log(`Failed to get attraction details of the attraction with id: ${attractionId}.`);
+        }
+    }
 }
 
 export { Api, baseUrl };
