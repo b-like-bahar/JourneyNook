@@ -18,6 +18,7 @@
     }
     &__logo{
         display: flex;
+        cursor: pointer;
         &-img{
             width: 200px;
             @include tablet{
