@@ -4,7 +4,7 @@ import { Api } from "../../../../client(FrontEnd)/src/utils/utils.js"
 import { Link } from "react-router-dom";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
-import { scrollToTop } from '../../utils/utilsFunctions.js';
+import { scrollToTop } from "../../../../client(FrontEnd)/src/utils/utilsFunctions"
 import "./CityDetailPage.scss"
 
 
@@ -110,25 +110,25 @@ function CityDetailPage() {
                         {selectedAttraction.attraction_name}
                     </h2>
                     <ul className="city__landmark-info">
-                        <li className="city__landmark-info-category  city__landmark-info-detail">
+                        <li className="city__landmark-info-category  city__landmark-info-detail large">
                             Category: {selectedAttraction.category}
                         </li>
-                        <li className="city__landmark-info-description  city__landmark-info-detail">
+                        <li className="city__landmark-info-description  city__landmark-info-detail large">
                             Description: {selectedAttraction.description}
                         </li>
-                        <li className="city__landmark-info-bestTimeToVisit  city__landmark-info-detail">
+                        <li className="city__landmark-info-bestTimeToVisit  city__landmark-info-detail large">
                             Best Time to Visit: {selectedAttraction.best_time_to_visit}
                         </li>
-                        <li className="city__landmark-info-hours  city__landmark-info-detail">
+                        <li className="city__landmark-info-hours  city__landmark-info-detail large">
                             Opening Hours: {selectedAttraction.hours}
                         </li>
-                        <li className="city__landmark-info-fee  city__landmark-info-detail">
+                        <li className="city__landmark-info-fee  city__landmark-info-detail large">
                             Entrance Fee: {selectedAttraction.fee}
                         </li>
-                        <li className="city__landmark-info-nearbyAttraction  city__landmark-info-detail">
+                        <li className="city__landmark-info-nearbyAttraction  city__landmark-info-detail large">
                             Nearby Attractions: {selectedAttraction.nearby_attraction}
                         </li>
-                        <li className="city__landmark-info-travelTips  city__landmark-info-detail">
+                        <li className="city__landmark-info-travelTips  city__landmark-info-detail large">
                             Travel Tips: {selectedAttraction.travel_tips}
                         </li>
                     </ul>

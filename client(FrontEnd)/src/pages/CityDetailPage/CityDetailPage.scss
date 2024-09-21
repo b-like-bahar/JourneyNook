@@ -25,6 +25,9 @@
     &__landmark {
         display: flex;
         flex-direction: column;
+        @include desktop{
+            padding: 0rem  3rem;
+        }
 
         &-container {
             display: flex;
