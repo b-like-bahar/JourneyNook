@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { Api } from "../../../../client(FrontEnd)/src/utils/utils"
+import { useNavigate } from 'react-router-dom';
 import { ReactSVG } from "react-svg";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import aboutImage from '../../assets/images/about-us-pic.jpg';
@@ -8,13 +9,14 @@ import "./HomePage.scss"
 
 function HomePage() {
     const api = new Api();
+    const navigate = useNavigate();
 
     const [cities, setCities] = useState([])
     const [showLeftButton, setShowLeftButton] = useState(false);
     const [showRightButton, setShowRightButton] = useState(true);
     const destinationListRef = useRef(null);
 
-    useEffect(() =>{
+    useEffect(() => {
         const getCities = async () => {
             const allCities = await api.getAllCities();
             setCities(allCities);
@@ -64,6 +66,10 @@ function HomePage() {
         };
     }, []);
 
+    const cityClickHandler = (city) => {
+        navigate(`/city/${city.id}`, { state: { cityName: city.city_name, country: city.country } });
+    };
+
     return (
         <>
             <div className="hero">
@@ -96,9 +102,9 @@ function HomePage() {
                             JourneyNook is here to make your travel experience seamless and enjoyable.
                         </p>
                         <p className="about__item-description-text2  large">
-                        We curate must-see landmarks, hidden gems, and essential travel tips for cities worldwide. 
-                        With our itinerary builder, you can plan your days, adjust activities, and tailor your schedule to your preferences. 
-                        JourneyNook ensures you're prepared to explore confidently, from iconic sights to local hidden gems.
+                            We curate must-see landmarks, hidden gems, and essential travel tips for cities worldwide.
+                            With our itinerary builder, you can plan your days, adjust activities, and tailor your schedule to your preferences.
+                            JourneyNook ensures you're prepared to explore confidently, from iconic sights to local hidden gems.
                         </p>
                     </div>
                 </div>
@@ -115,16 +121,19 @@ function HomePage() {
                     )}
                     <ul className="destinations__pics" ref={destinationListRef}>
                         {cities.map((city) => (
-                        <li key={city.id} className="destinations__pics-item">
-                            <img 
-                            className="destinations__pics-item-img" 
-                            src={city.city_image_path}
-                            alt={city.city_name}
-                            />
-                            <h2 className="destinations__pics-item-location">
-                                {city.city_name}, {city.country}
-                            </h2>
-                        </li>
+                            <li key={city.id}
+                                className="destinations__pics-item"
+                                onClick={() => cityClickHandler(city)}
+                            >
+                                <img
+                                    className="destinations__pics-item-img"
+                                    src={city.city_image_path}
+                                    alt={city.city_name}
+                                />
+                                <h2 className="destinations__pics-item-location">
+                                    {city.city_name}, {city.country}
+                                </h2>
+                            </li>
                         ))}
                     </ul>
                     {showRightButton && (
