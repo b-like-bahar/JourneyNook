@@ -4,7 +4,6 @@ import { Api } from "../../../../client(FrontEnd)/src/utils/utils.js"
 import { Link } from "react-router-dom";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
-import { scrollToTop } from "../../../../client(FrontEnd)/src/utils/utilsFunctions"
 import "./CityDetailPage.scss"
 
 
@@ -33,7 +32,7 @@ function CityDetailPage() {
             } else {
                 setSelectedAttraction(fetchedAttractions[0]);
             }
-            scrollToTop();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
         getCityAttractions();
     }, [cityId, attractionId]);
