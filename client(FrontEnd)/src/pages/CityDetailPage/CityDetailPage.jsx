@@ -4,6 +4,7 @@ import { Api } from "../../utils/utils.js"
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
 import "./CityDetailPage.scss"
+import PlanTripModal from "../../../../client(FrontEnd)/src/components/PlanTripModal/PlanTripModal.jsx";
 
 
 function CityDetailPage() {
@@ -11,9 +12,13 @@ function CityDetailPage() {
     const api = new Api();
     const location = useLocation();
 
-
     const { cityName, country } = location.state || {};
 
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [itinerary, setItinerary] = useState('');
+    const [days, setDays] = useState('');
+    const [budget, setBudget] = useState('');
+    const [tripType, setTripType] = useState('');
     const [attractions, setAttractions] = useState([]);
     const [selectedAttraction, setSelectedAttraction] = useState({});
     const [showLeftButton, setShowLeftButton] = useState(false);
@@ -91,6 +96,20 @@ function CityDetailPage() {
         return result;
     };
 
+    const closeModal = () => setModalIsOpen(false);
+    const submitTripFormHandler = (tripData) => {
+        console.log('Trip Data Submitted:', tripData);
+        setItinerary(`Trip planned for ${tripData.days} days, budget: ${tripData.budget}, type: ${tripData.tripType}`);
+        closeModal();
+    };
+
+    const openModal = () => {
+        setDays('');
+        setBudget('');
+        setTripType('');
+        setModalIsOpen(true);
+    };
+
     return (
         <>
             <div className="city">
@@ -98,10 +117,11 @@ function CityDetailPage() {
                     <h1 className="city__header-name">
                         {cityName}, {country}
                     </h1>
-                    <h3 className="city__header-btn">
+                    <h3 className="city__header-btn" onClick={openModal}>
                         Plan my Trip
                     </h3>
                 </div>
+
                 <div className="city__landmark">
                     <div className="city__landmark-container">
                         <img className="city__landmark-container-img"
@@ -136,6 +156,23 @@ function CityDetailPage() {
                         </li>
                     </ul>
                 </div>
+                {itinerary && (
+                    <div className="city__itinerary">
+                        <h2 className="city__itinerary-title">Your Itinerary</h2>
+                        <p className="city__itinerary-text">{itinerary}</p>
+                    </div>
+                )}
+                <PlanTripModal
+                    isOpen={modalIsOpen}
+                    onClose={closeModal}
+                    onSubmit={submitTripFormHandler}
+                    days={days}
+                    setDays={setDays}
+                    budget={budget}
+                    setBudget={setBudget}
+                    tripType={tripType}
+                    setTripType={setTripType}
+                />
             </div>
             <div className="attractions">
                 <h2 className="attractions__title">
