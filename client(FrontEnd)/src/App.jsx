@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/city/:cityId" element={<CityDetailPage />} />
           <Route path="/city/:cityId/attractions/:attractionId" element={<CityDetailPage />} />
-          <Route path="/itinerary" element={<ItineraryPage />} />
+          <Route path="/city/:cityId/itinerary" element={<ItineraryPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
