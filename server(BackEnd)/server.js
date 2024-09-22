@@ -12,15 +12,21 @@ app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json()); 
 app.use('/images', express.static("public/images"));
 
+
+
 app.use('/cities', citiesRouter);
 app.use('/attractions', attractionsRouter);
 app.use('/itinerary', itineraryRouter);
+
+app.get('/', (_req, res) => {
+    res.send("Hello API routes!!!");
+});
 
 app.use('*', (_req, res) => {
     res.status(404).json({ error: 'Route not found' });
 });
 
-app.use((err, _req, res, next) => {
+app.use((err, _req, res) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Internal Server Error'});
 })
