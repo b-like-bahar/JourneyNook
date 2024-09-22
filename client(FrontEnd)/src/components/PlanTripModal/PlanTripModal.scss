@@ -1,0 +1,131 @@
+@import "../../styles/global.scss";
+
+.city__modal {
+  background-color: $background-white;
+  color: $primary-text-color;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  @include tablet{
+    padding: 2rem;
+  }
+
+  &-overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-title {
+    margin: 0rem;
+    padding-bottom: 1rem;
+    ;
+  }
+
+  &-form {
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 1.5rem;
+
+      &-budget,
+      &-days {
+        all: unset;
+        appearance: none;
+        color: $primary-text-color;
+        background-color: $secondary-text-color;
+        border: $Mercury solid 0.125rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: .5rem;
+
+        &::placeholder {
+          color: $placeholder-color;
+          opacity: 1;
+          font-weight: 400;
+          font-size: .8125rem;
+          line-height: 1.25rem;
+        }
+        @include tablet{
+          padding: 0.75rem;
+        }
+      }
+
+      &-wrapper {
+        position: relative;
+      }
+
+      &-select {
+        appearance: none;
+        background-image: url("../../assets/icons/drop-down.svg");
+        background-repeat: no-repeat;
+        background-position: right 6px center;
+        background-size: 1.25rem;
+        border-radius: .5rem;
+        border: $Mercury solid 0.125rem;
+        background-color: $secondary-text-color;
+        color: $primary-text-color;
+        margin-top: 0.5rem;
+        padding: 0.65rem .75rem 0.65rem 0.5rem;
+        width: 100%;
+
+        &:invalid {
+          color: $placeholder-color;
+          opacity: 1;
+          font-weight: 400;
+          font-size: .8125rem;
+          line-height: 1.25rem;
+        }
+        @include tablet{
+          padding: 0.9rem;
+        }
+      }
+
+      &-component {
+        &:focus {
+          border: 0.125rem solid $primary-button-color ;
+          outline: none;
+        }
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: flex-end;
+
+      &-submit {
+        all: unset;
+        background-color: $primary-button-color;
+        border-radius: 1.25rem;
+        color: $secondary-text-color;
+        padding: .5rem 0.75rem;
+
+        &:hover {
+          background-color: $button-hover-color;
+        }
+      }
+
+      &-cancel {
+        all: unset;
+        color: $primary-button-color;
+
+        &:hover {
+          color: $button-hover-color ;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
