@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
-import { Api } from "../../utils/utils.js"
+import { useParams, useLocation, Link, useNavigate} from 'react-router-dom';
+import { Api } from "../../../../client(FrontEnd)/src/utils/utils";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
 import "./CityDetailPage.scss"
@@ -11,11 +11,10 @@ function CityDetailPage() {
     const { cityId, attractionId } = useParams();
     const api = new Api();
     const location = useLocation();
-
+    const navigate = useNavigate();
     const { cityName, country } = location.state || {};
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [itinerary, setItinerary] = useState('');
     const [days, setDays] = useState('');
     const [budget, setBudget] = useState('');
     const [tripType, setTripType] = useState('');
@@ -97,10 +96,18 @@ function CityDetailPage() {
     };
 
     const closeModal = () => setModalIsOpen(false);
-    const submitTripFormHandler = (tripData) => {
-        console.log('Trip Data Submitted:', tripData);
-        setItinerary(`Trip planned for ${tripData.days} days, budget: ${tripData.budget}, type: ${tripData.tripType}`);
-        closeModal();
+    const submitTripFormHandler = async (tripData) => {
+        setLoading(true);
+        try{
+            const generatedItinerary = await api.generateItinerary(cityName, tripData.days, tripData.budget, tripData.tripType)
+            navigate(`/city/${cityId}/itinerary`, { state: { itinerary: generatedItinerary.itinerary, cityName } });
+        } catch (err) {
+            console.error("Error generating itinerary", err);
+        } finally{
+            setLoading(false);
+            closeModal();
+        }
+        
     };
 
     const openModal = () => {
@@ -156,12 +163,6 @@ function CityDetailPage() {
                         </li>
                     </ul>
                 </div>
-                {itinerary && (
-                    <div className="city__itinerary">
-                        <h2 className="city__itinerary-title">Your Itinerary</h2>
-                        <p className="city__itinerary-text">{itinerary}</p>
-                    </div>
-                )}
                 <PlanTripModal
                     isOpen={modalIsOpen}
                     onClose={closeModal}
