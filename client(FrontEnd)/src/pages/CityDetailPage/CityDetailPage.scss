@@ -9,9 +9,13 @@
         padding: 2rem 2rem 1.5rem 2rem;
     }
 
-    &__name {
-        margin: 0rem;
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         padding-bottom: 1rem;
+        gap: 24px;
 
         @include tablet {
             padding-bottom: 1.5rem;
@@ -20,13 +24,40 @@
         @include tablet {
             padding-bottom: 3rem;
         }
+
+        &-name {
+            margin: 0rem;
+        }
+
+        &-btn {
+            background-color: #0095FF;
+            border-radius: 1.25rem;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0rem;
+            white-space: nowrap;
+            padding: .625rem;
+
+            @include tablet {
+                padding: .625rem 1rem;
+            }
+
+            &:hover {
+                background-color: #0065AD;
+            }
+        }
+
     }
+
 
     &__landmark {
         display: flex;
         flex-direction: column;
-        @include desktop{
-            padding: 0rem  3rem;
+
+        @include desktop {
+            padding: 0rem 3rem;
         }
 
         &-container {
@@ -85,7 +116,7 @@
 }
 
 .attractions {
-    padding: 1.5rem 0rem 2rem  0rem;
+    padding: 1.5rem 0rem 2rem 0rem;
     color: $primary-text-color;
 
     &__title {
@@ -113,8 +144,12 @@
             transform: translateY(-50%);
             left: 0px;
             @include scroll-buttons;
-            &{top: calc(50% - 25px);}
-            @include tablet{
+
+            & {
+                top: calc(50% - 25px);
+            }
+
+            @include tablet {
                 display: none;
             }
         }
@@ -123,15 +158,19 @@
             transform: translateY(-50%) scaleX(-1);
             right: 0px;
             @include scroll-buttons;
-            &{top: calc(50% - 25px);}
-            @include tablet{
+
+            & {
+                top: calc(50% - 25px);
+            }
+
+            @include tablet {
                 display: none;
             }
         }
     }
 
     &__pics {
-        padding: 1rem  0rem;
+        padding: 1rem 0rem;
         margin: 0rem;
         display: flex;
         flex-direction: row;
@@ -140,63 +179,69 @@
         overflow-x: scroll;
         scroll-behavior: smooth;
         scrollbar-width: none;
-        
+
         @include tablet {
             gap: 3rem;
         }
+
         @include desktop {
             gap: 2rem;
         }
-        
+
         &-divider {
             display: flex;
             flex-direction: row;
             gap: 1rem;
-            
+
             @include tablet {
                 flex-direction: column;
                 gap: 3rem;
             }
+
             @include desktop {
                 flex-direction: row;
                 gap: 2rem;
             }
-            
+
         }
-        
+
         &-item {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             border-radius: 12px;
-            transition: text-decoration 1s ease, 
-            opacity 0.3s ease;
-            &:hover{
+            transition: text-decoration 1s ease,
+                opacity 0.3s ease;
+
+            &:hover {
                 text-decoration: underline;
                 opacity: 80%;
             }
-            &-link{
+
+            &-link {
                 text-decoration: none;
                 color: $primary-text-color;
                 cursor: pointer;
+
                 &-img {
                     width: 13.75rem;
                     border-radius: 8px;
-    
+
                     @include tablet {
                         width: 20rem;
                     }
+
                     @include desktop {
                         width: 17.5rem;
                     }
                 }
-    
+
                 &-location {
                     margin: 0rem;
                     padding-top: 0.5rem;
                 }
             }
-            
+
         }
     }
 }

@@ -94,9 +94,14 @@ function CityDetailPage() {
     return (
         <>
             <div className="city">
-                <h1 className="city__name">
-                    {cityName}, {country}
-                </h1>
+                <div className="city__header">
+                    <h1 className="city__header-name">
+                        {cityName}, {country}
+                    </h1>
+                    <h3 className="city__header-btn">
+                        Plan my Trip
+                    </h3>
+                </div>
                 <div className="city__landmark">
                     <div className="city__landmark-container">
                         <img className="city__landmark-container-img"
