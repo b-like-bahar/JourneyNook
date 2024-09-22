@@ -28,3 +28,22 @@ export function createTripPrompt(days, budget, tripType, cityName) {
     }
     return content;
 }
+
+export const tripInputValidator = (req, res, next) => {
+    const { days, budget, tripType } = req.body;
+
+    if (!days || isNaN(days) || days <= 0 || !Number.isInteger(Number(days)) || days > 60) {
+        return res.status(400).json({ error: "Days must be a positive integer number between 1 and 60." });
+    }
+
+    if (!budget || isNaN(budget) || budget <= 0 || budget > 1000000) {
+        return res.status(400).json({ error: "Budget must be a positive number between 1 and 1,000,000." });
+    }
+
+    const validTripTypes = ["family", "couple", "friends", "solo"];
+    if (!validTripTypes.includes(tripType)) {
+        return res.status(400).json({ error: "There is no such trip type" });
+    }
+
+    next();
+};
