@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Api } from "../../../../client(FrontEnd)/src/utils/utils"
+import { Api } from "../../utils/utils.js"
 import { useNavigate } from 'react-router-dom';
 import { ReactSVG } from "react-svg";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';

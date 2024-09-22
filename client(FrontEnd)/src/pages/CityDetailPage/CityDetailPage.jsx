@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { Api } from "../../../../client(FrontEnd)/src/utils/utils.js"
-import { Link } from "react-router-dom";
+import { useParams, useLocation, Link } from 'react-router-dom';
+import { Api } from "../../utils/utils.js"
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
 import "./CityDetailPage.scss"
