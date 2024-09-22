@@ -37,6 +37,21 @@ class Api {
             console.log(`Failed to get attraction details of the attraction with id: ${attractionId}.`);
         }
     }
+
+
+    async generateItinerary(cityName, days, budget, tripType) {
+        try {
+            const response = await axios.post(`${this.baseUrl}/itinerary`, {
+                cityName,
+                days,
+                budget,
+                tripType,
+            });
+            return response.data;
+        } catch (err) {
+            console.error("Failed to generate itinerary");
+        }
+    }
 }
 
 export { Api, baseUrl };
