@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
     background-color: $background-beige;
     padding: 1rem 3rem;
     @include tablet{
@@ -21,10 +21,10 @@
         cursor: pointer;
 
         &-img {
-            width: 200px;
+            width: 12.5rem;
 
             @include tablet {
-                width: 300px;
+                width: 18.75rem;
             }
         }
     }
@@ -36,7 +36,7 @@
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
-        border-bottom: $background-beige-border solid 1px;
+        border-bottom: $background-beige-border solid .0625rem;
         width: 100%;
         @include tablet{
             gap: 1.5rem;
@@ -46,9 +46,9 @@
         &-link {
             cursor: pointer;
             &-img {
-                width: 30px;
+                width: 1.875rem;
                 @include tablet{
-                    width: 40px
+                    width: 2.5rem;
                 }
             }
         }

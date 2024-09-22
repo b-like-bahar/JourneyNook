@@ -135,31 +135,31 @@
         margin: 0rem;
         display: flex;
         flex-direction: row;
-        gap: 16px;
+        gap: 1rem;
         flex-wrap: nowrap;
         overflow-x: scroll;
         scroll-behavior: smooth;
         scrollbar-width: none;
         
         @include tablet {
-            gap: 48px;
+            gap: 3rem;
         }
         @include desktop {
-            gap: 32px
+            gap: 2rem;
         }
         
         &-divider {
             display: flex;
             flex-direction: row;
-            gap: 16px;
+            gap: 1rem;
             
             @include tablet {
                 flex-direction: column;
-                gap: 48px;
+                gap: 3rem;
             }
             @include desktop {
                 flex-direction: row;
-                gap: 32px
+                gap: 2rem;
             }
             
         }
@@ -180,14 +180,14 @@
                 color: $primary-text-color;
                 cursor: pointer;
                 &-img {
-                    width: 220px;
+                    width: 13.75rem;
                     border-radius: 8px;
     
                     @include tablet {
-                        width: 320px;
+                        width: 20rem;
                     }
                     @include desktop {
-                        width: 280px;
+                        width: 17.5rem;
                     }
                 }
     

@@ -124,7 +124,7 @@
             }
 
             &-border {
-                border: #FF8745 solid 3px;
+                border: #FF8745 solid .1875rem;
                 border-radius: 8px;
                 z-index: 1;
                 position: absolute;
@@ -217,7 +217,7 @@
         overflow-x: scroll;
         scroll-behavior: smooth;
         scrollbar-width: none;
-        gap: 16px;
+        gap: 1rem;
 
         &-item {
             position: relative;
@@ -241,12 +241,12 @@
             }
 
             &-img {
-                width: 200px;
+                width: 12.5rem;
                 border-radius: 20px;
                 object-fit: cover;
 
                 @include tablet {
-                    width: 250px;
+                    width: 15.625rem;
                 }
             }
 
