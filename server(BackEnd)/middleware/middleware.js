@@ -6,7 +6,17 @@ export function createTripPrompt(days, budget, tripType, cityName) {
                 Some days can be more expensive, and others less expensive, but ensure the total cost for the trip stays within the overall budget. 
                 Please provide activities, meals, and experiences for **each** day. Break each day into morning, afternoon, and evening segments. 
                 Provide approximate costs for each day, and make sure **no days are left empty**.
-                State the cost of the whole day just once on each day.`;
+                State the cost of the whole day just once on each day.
+
+                Ensure the format is strictly:
+
+                Day X:
+                Morning: [Activity and cost]
+                Afternoon: [Activity and cost]
+                Evening: [Activity and cost]
+                Total Cost for Day X: [total cost]
+
+                Do not provide more than ${days} days in total.`;
 
     if (tripType === "family") {
         content = `Generate a detailed ${days}-day family-friendly itinerary in ${cityName}. 
@@ -14,27 +24,59 @@ export function createTripPrompt(days, budget, tripType, cityName) {
                 Include activities suitable for children, affordable dining, and safe accommodations. 
                 For each day, break it into morning, afternoon, and evening segments with activities for kids and families.
                 Some days can be more expensive, provide approximate costs for each day, and make sure no days are left empty.
-                State the cost of the whole day just once on each day`;
+                State the cost of the whole day just once on each day. Follow the format:
+
+                Day X:
+                Morning: [Activity and cost]
+                Afternoon: [Activity and cost]
+                Evening: [Activity and cost]
+                Total Cost for Day X: [total cost]
+
+                Do not provide more than ${days} days in total.`;
     } else if (tripType === "couple") {
         content = `Generate a detailed ${days}-day romantic itinerary for a couple in ${cityName}. 
                 The total trip budget is ${budget} dollars, with an average daily budget of ${dailyBudget} dollars.
                 Include romantic activities, scenic views, and intimate dining experiences. 
                 Break each day into morning, afternoon, and evening plans. Provide approximate costs for each day.
                 No days should be left without activities or dining suggestions.
-                State the cost of the whole day just once on each day`;
+                Follow the format:
+
+                Day X:
+                Morning: [Activity and cost]
+                Afternoon: [Activity and cost]
+                Evening: [Activity and cost]
+                Total Cost for Day X: [total cost]
+
+                Do not provide more than ${days} days in total.`;
     } else if (tripType === "friends") {
         content = `Generate a detailed ${days}-day fun itinerary for a group of friends in ${cityName}. 
                 The total trip budget is ${budget} dollars, with an average daily budget of ${dailyBudget} dollars.
                 Include group activities, social hangouts, and nightlife. Break each day into morning, afternoon, and evening segments.
                 Provide approximate costs for each day.
                 Ensure each day is filled with activities without gaps.
-                State the cost of the whole day just once on each day`;
+                Follow the format:
+
+                Day X:
+                Morning: [Activity and cost]
+                Afternoon: [Activity and cost]
+                Evening: [Activity and cost]
+                Total Cost for Day X: [total cost]
+
+                Do not provide more than ${days} days in total.`;
     } else if (tripType === "solo") {
         content = `Generate a detailed ${days}-day itinerary for a solo traveler in ${cityName}. 
                 The total trip budget is ${budget} dollars, with an average daily budget of ${dailyBudget} dollars.
                 Include activities like exploring local culture, visiting landmarks, and dining experiences for one.
                 Each day should be broken into morning, afternoon, and evening segments, provide approximate costs for each day and ensure no days are left empty.
-                State the cost of the whole day just once on each day`;
+                Follow the format:
+
+                Day X:
+                Morning: [Activity and cost]
+                Afternoon: [Activity and cost]
+                Evening: [Activity and cost]
+                Total Cost for Day X: [total cost]
+
+                Do not provide more than ${days} days in total.`;
     }
     return content;
 }
@@ -57,3 +99,4 @@ export const tripInputValidator = (req, res, next) => {
 
     next();
 };
+
