@@ -40,8 +40,9 @@ function PlanTripModal({ isOpen, onClose, onSubmit, days, setDays, budget, setBu
             id="city__modal-form-item-days"
             type="number"
             min="1"
+            max="10"
             value={days}
-            placeholder="Number of days"
+            placeholder="Enter up to 10 days"
             onChange={(event) => setDays(event.target.value)}
             required
           />
@@ -57,10 +58,10 @@ function PlanTripModal({ isOpen, onClose, onSubmit, days, setDays, budget, setBu
             className="city__modal-form-item-budget  city__modal-form-item-component"
             id="city__modal-form-item-budget"
             type="number"
-            min="0"
-            max="1000000"
+            min="1"
+            max="20000"
             value={budget}
-            placeholder="$USD"
+            placeholder="Enter budget in $USD (Max 20,000)"
             onChange={(event) => setBudget(event.target.value)}
             required
           />
