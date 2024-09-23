@@ -241,7 +241,104 @@
                     padding-top: 0.5rem;
                 }
             }
+            
+        }
+    }
+}
 
+.loading-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    margin: 1.5rem;
+    &__message{
+        color: $secondary-text-color;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        font-size: 1.25rem;
+        text-align: center;
+        z-index: 1010;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    &__loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        border: 4px solid #0000;
+        border-radius: 50%;
+        border-color: #ccc #0000;
+        animation: l16 1s infinite linear;
+    }
+    
+    &__loader::before,
+    &__loader::after {
+        content: "";
+        grid-area: 1/1;
+        margin: 2px;
+        border: inherit;
+        border-radius: 50%;
+    }
+    
+    &__loader::before {
+        border-color: #f03355 #0000;
+        animation: inherit;
+        animation-duration: .5s;
+        animation-direction: reverse;
+    }
+    
+    &__loader::after {
+        margin: 8px;
+    }
+    
+    @keyframes l16 {
+        100% {
+            transform: rotate(1turn)
+        }
+    }
+    
+    &__loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: grid;
+        border: 4px solid #0000;
+        border-radius: 50%;
+        border-color: #ccc #0000;
+        animation: l16 1s infinite linear;
+    }
+    
+    &__loader::before,
+    &__loader::after {
+        content: "";
+        grid-area: 1/1;
+        margin: 2px;
+        border: inherit;
+        border-radius: 50%;
+    }
+    
+    &__loader::before {
+        border-color: #f03355 #0000;
+        animation: inherit;
+        animation-duration: .5s;
+        animation-direction: reverse;
+    }
+    
+    &__loader::after {
+        margin: 8px;
+    }
+    
+    @keyframes l16 {
+        100% {
+            transform: rotate(1turn);
         }
     }
 }
