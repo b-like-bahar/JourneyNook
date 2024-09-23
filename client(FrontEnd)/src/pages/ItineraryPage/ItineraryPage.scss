@@ -1,0 +1,15 @@
+@import "../../styles/global.scss";
+
+.itinerary{
+    background-color: $background-white;
+    border-radius: 1.25rem;
+    padding:1rem;
+    margin: 1.5rem;
+}
+
+.itinerary__total-cost {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
