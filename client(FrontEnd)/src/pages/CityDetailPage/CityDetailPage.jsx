@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { useParams, useLocation, Link, useNavigate} from 'react-router-dom';
+import { useParams, useLocation, Link, useNavigate } from 'react-router-dom';
 import { Api } from "../../../../client(FrontEnd)/src/utils/utils";
 import scrollArrowIcon from '../../assets/icons/scroll-arrow.svg';
 import { ReactSVG } from "react-svg";
@@ -8,11 +8,13 @@ import PlanTripModal from "../../../../client(FrontEnd)/src/components/PlanTripM
 
 
 function CityDetailPage() {
-    const { cityId, attractionId } = useParams();
+
     const api = new Api();
     const location = useLocation();
     const navigate = useNavigate();
-    const { cityName, country } = location.state || {};
+    const [cityName, setCityName] = useState(location.state?.cityName || "");
+    const [country, setCountry] = useState(location.state?.country || "");
+    const { cityId, attractionId } = useParams();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [days, setDays] = useState('');
@@ -22,8 +24,18 @@ function CityDetailPage() {
     const [selectedAttraction, setSelectedAttraction] = useState({});
     const [showLeftButton, setShowLeftButton] = useState(false);
     const [showRightButton, setShowRightButton] = useState(true);
-    const [loading, setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
     const landmarkListRef = useRef(null);
+
+
+    useEffect(() => {
+        document.title = `JourneyNook - ${cityName}`
+        if (!cityName || !country) {
+            const { cityName, country } = location.state || {};
+            setCityName(cityName || "Unknown City");
+            setCountry(country || "Unknown Country");
+        }
+    }, [location.state]);
 
     useEffect(() => {
         const getCityAttractions = async () => {
@@ -99,16 +111,21 @@ function CityDetailPage() {
     const closeModal = () => setModalIsOpen(false);
     const submitTripFormHandler = async (tripData) => {
         setLoading(true);
-        try{
-            const generatedItinerary = await api.generateItinerary(cityName, tripData.days, tripData.budget, tripData.tripType)
-            navigate(`/city/${cityId}/itinerary`, { state: { itinerary: generatedItinerary.itinerary, cityName } });
+        try {
+            const generatedItinerary = await api.generateItinerary(cityName, tripData.days, tripData.budget, tripData.tripType);
+
+            if (generatedItinerary) {
+                navigate(`/city/${cityId}/itinerary`, { state: { itinerary: generatedItinerary, cityName } });
+                closeModal();
+            } else {
+                alert("Failed to generate the itinerary. Please try again.");
+            }
         } catch (err) {
-            console.error("Error generating itinerary", err);
-        } finally{
+            console.error("Error generating itinerary:", err);
+            alert("Failed to generate the itinerary. Please try again.");
+        } finally {
             setLoading(false);
-            closeModal();
         }
-        
     };
 
     const openModal = () => {
@@ -120,14 +137,14 @@ function CityDetailPage() {
 
     return (
         <>
-                {loading && (
-            <div className="loading-overlay">
-                <div className="loading-overlay__message">
-                    <div className="loading-overlay__loader"></div>
-                    Generating your itinerary, please wait...
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="loading-overlay__message large">
+                        <div className="loading-overlay__loader"></div>
+                        Generating your itinerary, please wait...
+                    </div>
                 </div>
-            </div>
-        )}
+            )}
             <div className="city">
                 <div className="city__header">
                     <h1 className="city__header-name">
