@@ -13,9 +13,9 @@ if (!process.env.OPENAI_API_KEY) {
     return res.status(500).json({ error: 'OpenAI API key is missing' });
   }
 
-  const content = createTripPrompt(days, budget, tripType, cityName);
+  let content = createTripPrompt(days, budget, tripType, cityName);
 
-  const maxTokens = days > 7 ? 500 : 300;
+  let maxTokens = days > 5 ? 1500 : 700;
 
   const messages = [
     {
@@ -25,26 +25,44 @@ if (!process.env.OPENAI_API_KEY) {
     {
       role: "user",
       content: content,
-    },
+    }
   ];
+  let generatedItinerary = "";
+  let finishReason = null;
+  let continuationAttempts = 0;
+  const maxContinuationAttempts = 3;
+
   try {
-
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",
-        messages: messages,
-        max_tokens: maxTokens,
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    while (finishReason !== "stop" && continuationAttempts <= maxContinuationAttempts) {
+      const response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-3.5-turbo",
+          messages: messages,
+          max_tokens: maxTokens,
+          temperature: 0.3,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          },
+        }
+      );
+      const newContent = response.data.choices[0].message.content;
+      finishReason = response.data.choices[0].finish_reason;
 
-    const generatedItinerary = response.data.choices[0].message.content;
+      generatedItinerary += newContent;
+      if (finishReason === "length") {
+        messages.push({
+          role: "assistant",
+          content: "Please continue the itinerary without repeating the previous steps."
+        });
+        continuationAttempts++;
+        maxTokens = 1000;
+      } else if (finishReason !== "length" && finishReason !== "stop") {
+        break;
+      }
+    }
 
     res.status(200).json({ itinerary: generatedItinerary });
   } catch (error) {
@@ -56,4 +74,6 @@ if (!process.env.OPENAI_API_KEY) {
   }
 };
 
-export { generateItinerary }
+export { 
+  generateItinerary 
+}
