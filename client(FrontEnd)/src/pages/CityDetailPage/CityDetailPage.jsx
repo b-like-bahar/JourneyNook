@@ -22,6 +22,7 @@ function CityDetailPage() {
     const [selectedAttraction, setSelectedAttraction] = useState({});
     const [showLeftButton, setShowLeftButton] = useState(false);
     const [showRightButton, setShowRightButton] = useState(true);
+    const [loading, setLoading]=useState(false);
     const landmarkListRef = useRef(null);
 
     useEffect(() => {
@@ -119,6 +120,14 @@ function CityDetailPage() {
 
     return (
         <>
+                {loading && (
+            <div className="loading-overlay">
+                <div className="loading-overlay__message">
+                    <div className="loading-overlay__loader"></div>
+                    Generating your itinerary, please wait...
+                </div>
+            </div>
+        )}
             <div className="city">
                 <div className="city__header">
                     <h1 className="city__header-name">
