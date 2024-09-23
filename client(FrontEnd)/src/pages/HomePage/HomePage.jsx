@@ -8,6 +8,7 @@ import "./HomePage.scss"
 
 
 function HomePage() {
+    document.title = "JourneyNook"
     const api = new Api();
     const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ function HomePage() {
     const destinationListRef = useRef(null);
 
     useEffect(() => {
+
         const getCities = async () => {
             const allCities = await api.getAllCities();
             setCities(allCities);
