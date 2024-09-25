@@ -30,6 +30,7 @@
         }
 
         &-btn {
+            all: unset;
             background-color: #0095FF;
             border-radius: 1.25rem;
             color: #ffffff;
@@ -39,6 +40,7 @@
             margin: 0rem;
             white-space: nowrap;
             padding: .625rem;
+
 
             @include tablet {
                 padding: .625rem 1rem;
@@ -116,8 +118,11 @@
 }
 
 .attractions {
-    padding: 1.5rem 0rem 2rem 0rem;
+    padding: 1.5rem 0rem 0rem 0rem;
     color: $primary-text-color;
+    @include tablet {
+        padding-bottom: 3rem;
+    }
 
     &__title {
         margin: 0rem;
