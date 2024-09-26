@@ -31,30 +31,35 @@ Below are some screenshots that give an overview of the different pages and feat
 
 ### 1. Home Page
 ![Home Page](./public/app-previews/home-page.png)
+
 The landing page of the app where users can get an overview of popular travel destinations.
 
 ---
 
 ### 2. City Detail Page
 ![City Detail Page](./public/app-previews/city-detail-page.png)
+
 Detailed information about a specific city, including top attractions, recommended times to visit, entrance fee, opening hours and nearby places of interest of that specific attraction.
 
 ---
 
 ### 3. Itinerary Page
 ![Itinerary Page](./public/app-previews/itinerary-page.png)
+
 Shows a dynamically generated itinerary with AI based on the user’s input, including travel days, budget, and type of trip.
 
 ---
 
 ### 4. Trip Planning Modal
 ![Trip Planning Modal](./public/app-previews/trip-planning-modal.png)
+
 A modal where users can enter details about their trip, such as the number of days, budget, and type of trip. This information is used to create a custom itinerary.
 
 ---
 
 ### 5. Loading Spinner for Itinerary
 ![Loading Spinner for Itinerary](./public/app-previews/loading-spinner-for-Itinerary.png)
+
 A loading spinner that appears while the app (AI) generates the itinerary based on the user’s preferences. This ensures the user knows the system is working.
 
 ---
