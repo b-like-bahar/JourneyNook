@@ -39,7 +39,7 @@ The landing page of the app where users can get an overview of popular travel de
 ### 2. City Detail Page
 ![City Detail Page](./public/app-previews/city-detail-page.png)
 
-Detailed information about a specific city, including top attractions, recommended times to visit, entrance fee, opening hours and nearby places of interest of that specific attraction.
+Detailed information about a specific city, including top attractions, recommended times to visit, entrance fee, opening hours, and nearby places of interest of that specific attraction.
 
 ---
 
@@ -58,12 +58,11 @@ A modal where users can enter details about their trip, such as the number of da
 ---
 
 ### 5. Loading Spinner for Itinerary
-![Loading Spinner for Itinerary](./public/app-previews/loading-spinner-for-Itinerary.png)
+![Loading Spinner for Itinerary](./public/app-previews/loading-spinner-for-itinerary.png)
 
 A loading spinner that appears while the app (AI) generates the itinerary based on the user’s preferences. This ensures the user knows the system is working.
 
 ---
-
 
 ## Implementation
 
