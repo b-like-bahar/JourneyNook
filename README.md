@@ -58,7 +58,7 @@ A modal where users can enter details about their trip, such as the number of da
 ---
 
 ### 5. Loading Spinner for Itinerary
-![Loading Spinner for Itinerary](./public/app-previews/loading-spinner-for-itinerary.png)
+![Loading Spinner for Itinerary](./public/app-previews/loading-spinner-for-Itinerary.png)
 
 A loading spinner that appears while the app (AI) generates the itinerary based on the user’s preferences. This ensures the user knows the system is working.
 
