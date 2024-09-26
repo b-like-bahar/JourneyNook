@@ -29,6 +29,30 @@ body {
     @include desktop {
         margin: 7rem  15rem;
     }
+    &__btn{
+            all: unset;
+            background-color: #0095FF;
+            border-radius: 1.25rem;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem  0rem;
+            white-space: nowrap;
+            padding: .625rem;
+
+
+            @include tablet {
+                padding: .625rem 1.5rem;
+                width: 32px;
+                justify-content: flex-end;
+                align-self: flex-end;
+            }
+
+            &:hover {
+                background-color: #0065AD;
+            }
+    }
 }
 
 
