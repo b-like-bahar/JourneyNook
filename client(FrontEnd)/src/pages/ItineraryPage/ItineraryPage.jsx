@@ -1,5 +1,6 @@
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "./ItineraryPage.scss"
 
 function ItineraryPage() {
@@ -24,13 +25,17 @@ function ItineraryPage() {
         <div className="itinerary">
             <h1 className="itinerary__title">Your Itinerary for {cityName}</h1>
             <div className="itinerary__content large">
-                <p>{itinerary}</p>
+                <p dangerouslySetInnerHTML={{ __html: itinerary.replace(/\n/g, '<br>') }}></p>
             </div>
+            <Link className="itinerary__btn" to="`/">
+                Done
+            </Link>
         </div>
     );
 }
 
 export default ItineraryPage;
+
 
 
 
