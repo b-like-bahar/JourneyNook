@@ -1,0 +1,264 @@
+@import "../../styles/global.scss";
+
+.hero {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        background-image: linear-gradient(rgb(50, 50, 50, 20%), rgb(50, 50, 50, 20%)),
+            url("../../assets/images/sunrise-hero.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        height: 66vw;
+        justify-content: flex-start;
+        color: $secondary-text-color;
+
+        @include tablet {
+            max-height: 58vw;
+            background-position: bottom;
+        }
+
+        @include desktop {
+            max-height: 62vw;
+        }
+
+        &-quote {
+            padding: 2rem 1.5rem;
+            margin: 0rem;
+
+            @include tablet {
+                padding-left: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+            }
+
+            @include desktop {
+                padding-left: 6rem;
+            }
+
+            &-firstLine {
+                margin: 0rem;
+                padding-bottom: 0.25rem;
+                @include hero-font;
+            }
+
+            &-secondLine {
+                margin: 0rem;
+                padding-left: 1.75rem;
+                padding-bottom: 0.25rem;
+                @include hero-font;
+
+                @include tablet {
+                    padding-left: 2.5rem;
+                }
+
+                @include desktop {
+                    padding-left: 4rem;
+                }
+            }
+
+            &-name {
+                margin: 0rem;
+                padding-left: 10rem;
+
+                @include tablet {
+                    padding-left: 17rem;
+                }
+
+                @include desktop {
+                    padding-left: 29.5rem;
+                }
+            }
+        }
+    }
+}
+
+.about {
+    background-color: $background-white;
+    margin: 0rem;
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    color: $primary-text-color;
+
+    &__title {
+        margin: 0rem;
+        padding-bottom: 1.5rem;
+
+        @include tablet {
+            padding-bottom: 3rem;
+            padding-top: 1rem;
+        }
+
+        @include desktop {
+            padding-bottom: 5rem;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            @include tablet {
+                width: 50vw;
+            }
+
+            &-img {
+                object-fit: cover;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, .7);
+                width: 100%;
+                height: auto;
+            }
+
+            &-border {
+                border: #FF8745 solid .1875rem;
+                border-radius: 8px;
+                z-index: 1;
+                position: absolute;
+                width: 99%;
+                height: 99%;
+                top: -12px;
+                left: -12px;
+            }
+
+        }
+
+        &-description {
+            padding-top: 1.5rem;
+
+            @include tablet {
+                display: flex;
+                flex-direction: row;
+                gap: 1.5rem;
+                padding: 1.5rem 3rem;
+                margin-top: 2rem;
+            }
+            @include desktop {
+                padding: 1.5rem 10rem;
+            }
+
+            &-text1,
+            &-text2 {
+                margin: 0rem;
+                padding-bottom: 1rem;
+                flex:1;
+
+                @include tablet {
+                    padding: 0rem 0em 1rem 0rem
+                }
+            }
+        }
+    }
+}
+
+.destinations {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0.25rem;
+    color: $primary-text-color;
+
+    @include tablet {
+        padding: 2rem 0.5rem;
+    }
+
+    &__title {
+        margin: 0rem;
+        padding: 0rem 1.5rem 1.5rem 1.5rem;
+
+        @include tablet {
+            padding: 0rem 1.5rem 1.5 2rem;
+
+        }
+    }
+
+    &__scroll {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 0rem 1.25rem 1rem 1.25rem;
+
+        @include tablet {
+            padding: 0rem 1.5rem 1rem 1.5rem;
+        }
+
+        &-button-left {
+            transform: translateY(-50%);
+            left: 0px;
+            @include scroll-buttons;
+        }
+
+        &-button-right {
+            transform: translateY(-50%) scaleX(-1);
+            right: 0px;
+            @include scroll-buttons;
+        }
+    }
+
+    &__pics {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        list-style-type: none;
+        margin: 0rem;
+        padding: 1.5rem 0rem;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        gap: 1rem;
+
+        &-item {
+            position: relative;
+            cursor: pointer;
+
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 6px;
+                left: 0;
+                width: 100%;
+                height: 40%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+                border-radius: 20px;
+                z-index: 1;
+                transition: opacity 0.3s ease;
+            }
+
+            &:hover {
+                opacity: 80%;
+            }
+
+            &-img {
+                width: 12.5rem;
+                border-radius: 20px;
+                object-fit: cover;
+
+                @include tablet {
+                    width: 15.625rem;
+                }
+            }
+
+            &-location {
+                position: absolute;
+                bottom: 0px;
+                left: 10px;
+                color: $secondary-text-color;
+                width: 80%;
+                z-index: 2;
+            }
+        }
+    }
+}
