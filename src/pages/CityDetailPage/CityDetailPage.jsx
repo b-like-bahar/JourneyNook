@@ -113,7 +113,7 @@ function CityDetailPage() {
     const submitTripFormHandler = async (tripData) => {
         setLoading(true);
         try {
-            const generatedItinerary = await api.generateItinerary(cityName, tripData.days, tripData.budget, tripData.tripType);
+            const generatedItinerary = await api.generateItinerary(cityName, tripData.days, tripData.budget, tripData.numberOfPeople, tripData.tripType);
 
             if (generatedItinerary) {
                 navigate(`/city/${cityId}/itinerary`, { state: { itinerary: generatedItinerary, cityName } });
@@ -199,6 +199,7 @@ function CityDetailPage() {
                     setDays={setDays}
                     budget={budget}
                     setBudget={setBudget}
+                    numberOfPeople={numberOfPeople}
                     setNumberOfPeople={setNumberOfPeople}
                     tripType={tripType}
                     setTripType={setTripType}
