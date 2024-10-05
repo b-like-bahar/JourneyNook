@@ -39,13 +39,14 @@ class Api {
     }
 
 
-    async generateItinerary(cityName, days, budget, tripType) {
+    async generateItinerary(cityName, days, budget, numberOfPeople, tripType) {
         try {
             const response = await axios.post(`${this.baseUrl}/itinerary`, {
                 cityName,
                 days,
                 budget,
-                tripType,
+                numberOfPeople,
+                tripType
             });
             return response.data;
         } catch (err) {
