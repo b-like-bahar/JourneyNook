@@ -3,11 +3,11 @@ import './PlanTripModal.scss';
 
 Modal.setAppElement('#root');
 
-function PlanTripModal({ isOpen, onClose, onSubmit, days, setDays, budget, setBudget, tripType, setTripType }) {
+function PlanTripModal({ isOpen, onClose, onSubmit, days, setDays, budget, setBudget, numberOfPeople, setNumberOfPeople, tripType, setTripType }) {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const tripData = { days, budget, tripType };
+    const tripData = { days, budget, numberOfPeople, tripType };
     onSubmit(tripData);
   };
 
@@ -63,6 +63,25 @@ function PlanTripModal({ isOpen, onClose, onSubmit, days, setDays, budget, setBu
             value={budget}
             placeholder="Enter budget in $USD (Max 20,000)"
             onChange={(event) => setBudget(event.target.value)}
+            required
+          />
+        </div>
+        <div className="city__modal-form-item">
+          <label
+            className="city__modal-form-item-label large"
+            htmlFor="city__modal-form-item-numberOfPeople"
+          >
+            How many people will be joining the trip?
+          </label>
+          <input
+            className="city__modal-form-item-numberOfPeople  city__modal-form-item-component"
+            id="city__modal-form-item-numberOfPeople"
+            type="number"
+            min="1"
+            max="10"
+            value={numberOfPeople}
+            placeholder="Enter up to 10 people"
+            onChange={(event) => setNumberOfPeople(event.target.value)}
             required
           />
         </div>
