@@ -39,7 +39,8 @@
       padding-bottom: 1.5rem;
 
       &-budget,
-      &-days {
+      &-days,
+      &-numberOfPeople {
         all: unset;
         appearance: none;
         color: $primary-text-color;
