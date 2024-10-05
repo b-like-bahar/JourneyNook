@@ -19,6 +19,7 @@ function CityDetailPage() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [days, setDays] = useState('');
     const [budget, setBudget] = useState('');
+    const [numberOfPeople, setNumberOfPeople]= useState('');
     const [tripType, setTripType] = useState('');
     const [attractions, setAttractions] = useState([]);
     const [selectedAttraction, setSelectedAttraction] = useState({});
@@ -131,6 +132,7 @@ function CityDetailPage() {
     const openModal = () => {
         setDays('');
         setBudget('');
+        setNumberOfPeople('');
         setTripType('');
         setModalIsOpen(true);
     };
@@ -197,6 +199,7 @@ function CityDetailPage() {
                     setDays={setDays}
                     budget={budget}
                     setBudget={setBudget}
+                    setNumberOfPeople={setNumberOfPeople}
                     tripType={tripType}
                     setTripType={setTripType}
                 />
