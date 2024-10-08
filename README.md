@@ -18,11 +18,7 @@ Planning a trip can be overwhelming, especially when trying to organize activiti
 
 - **Explore Destinations**: Users can browse different cities, each featuring iconic landmarks and scenic spots, and view detailed descriptions of each location to help plan their trips.
 
-- **AI-Powered Itinerary Generation**: Users can generate personalized itineraries by providing trip details such as the number of days, budget, and trip type. The app creates a detailed schedule based on the input, helping users get started with trip planning.
-
-- **Budget Overview**: Users can enter their trip budget and see how much they have to spend on activities. While the itinerary is being generated, the app provides a budget overview based on the suggested activities.
-
-- **Trip Planning**: Users can plan their trips by selecting the "Plan My Trip" option, which takes them to a dynamic itinerary page that organizes their days and activities based on the input provided.
+- **AI-Powered Itinerary Generation**: Users can generate personalized itineraries by providing trip details such as the number of days, budget, the number of people joining, and trip type. The app creates a detailed schedule based on the input, helping users get started with trip planning.
 
 
 # App Previews
