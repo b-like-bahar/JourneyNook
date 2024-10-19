@@ -1,6 +1,8 @@
 # Project Title
 JourneyNook
 
+Checkout the Backend code at: [JourneyNook API Repository](https://github.com/b-like-bahar/JourneyNook-api)
+
 ## Overview
 
 JourneyNook is an AI-powered travel itinerary planner that helps users generate personalized trip plans tailored to their preferences. Whether you're planning a quick getaway or a long vacation, JourneyNook simplifies the process by automatically creating detailed itineraries based on the number of days, budget, and trip type. In addition to itinerary creation, users can explore cities and discover key landmarks and attractions within each destination, gaining insights into must-see locations.
@@ -87,3 +89,33 @@ A loading spinner that appears while the app (AI) generates the itinerary based 
 ### APIs
 OpenAI API: The OpenAI API powers the AI-driven itinerary generation feature in JourneyNook.
 
+## Full Project Setup 
+To run the complete project, follow the steps for both the frontend and backend:
+### Frontend Setup
+
+1. **Clone this repository:**
+   ```bash
+   git clone https://github.com/b-like-bahar/JourneyNook.git
+   
+2. **Install dependencies:**
+   ```bash
+   npm install
+
+3. **Set up environment variables:**  
+   The project requires a `.env` file for configuration. You can create this file based on the `.env.example` provided in the repository. 
+
+   Copy the `.env.example` file and rename it to `.env`.
+
+   Then, open the `.env` file and update the following variable with the correct value:
+
+   ```bash
+   VITE_API_URL=http://localhost:8080
+   
+   (The port number can be anything you set up for your backend)
+4. **Run the development server:**
+   ```bash
+    npm run dev
+   
+
+   
+   
