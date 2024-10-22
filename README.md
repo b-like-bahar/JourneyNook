@@ -89,6 +89,23 @@ A loading spinner that appears while the app (AI) generates the itinerary based 
 ### APIs
 OpenAI API: The OpenAI API powers the AI-driven itinerary generation feature in JourneyNook.
 
+### API Routes:
+The JourneyNook backend provides several API routes to access cities, attractions, and generate trip itineraries. Below is an overview of the available API endpoints and their functions.
+ ***Base URL***
+ - For local development: http://localhost:<PORT>
+ - Replace <PORT> with the value from your .env file, typically 8080.
+***Available API Endpoints***
+   1. ***Cities API (/cities)***
+      - GET /cities: Fetches a list of all cities.
+      - GET /cities/:cityId: Fetches details for a specific city using the cityId.
+      - GET /cities/:cityId/attractions: Fetches all attractions for a specific city by cityId.
+    2. ***Attractions API (/attractions)***
+      - GET /attractions/:attractionId: Fetches details of a specific attraction by attractionId.
+    3. ***Itinerary API  (/itinerary)***
+      - POST /itinerary: Generates a trip itinerary based on the input data (days, budget, number of people, and trip type).
+            - Request Body: Include the necessary data for generating an itinerary (days, budget, number of people, and trip type).
+            - Middleware: Input data is validated by tripInputValidator.
+
 ## Full Project Setup 
 **Note:**  
 This repository initially contained both the frontend and backend code, so you may see commits related to both parts in the history. However, to simplify deployment, the frontend and backend have been separated into their own repositories.
@@ -115,7 +132,7 @@ To run the complete project, follow the steps for both the frontend and backend:
    ```bash
    VITE_API_URL=http://localhost:8080
    
-   (The port number can be anything you set up for your backend)
+   (The port can be anything you set up for your backend)
 4. **Run the development server:**
    ```bash
     npm run dev
@@ -148,7 +165,7 @@ To run the complete project, follow the steps for both the frontend and backend:
    Once the server is running, you can access the backend API at:
    ```bash
    http://localhost:PORT
-   (The port number can be anything you set up for your backend)
+   (The port can be anything you set up for your backend)
    ### Database Setup
 
 
