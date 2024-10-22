@@ -188,6 +188,27 @@ Once the database is created, select it to start using it:
 7. ***Seed the Database:***
    ```bash
    npx knex seed:run
-
+Once the migrations and seeds have been applied, your database will be ready for use!
 
    
+### OpenAI API Key Setup
+This project uses the OpenAI API to integrate AI-powered features. To enable these features, you'll need to obtain an OpenAI API key and set it in your .env file.
+
+Steps to Set Up the OpenAI API Key:
+
+1. ***Sign up for OpenAI (or log in if you already have an account):***
+
+- Go to [OpenAI's official website](https://chatgpt.com/c/671433da-151c-8007-9a12-6f9d22827f2b#:~:text=OpenAI%27s%20official%20website) and sign up for an account. If you already have an account, simply log in.
+- OpenAI offers a free tier with limited usage, but for extensive use of the API, you may need to subscribe to a paid plan. (If the intinerary in JourneyNook is not generating for you, you may need to subscribe to a pain plan)
+
+2. ***Generate an API key:***
+- After logging in, navigate to the API Keys section in your Dashboard.
+- Click Create new secret key and copy the API key. Note: Make sure to copy the key immediately, as OpenAI will not show it again after you leave the page.
+
+3. ***Update Your .env File:***
+Paste your API key in the .env file
+    ```bash
+    OPENAI_API_KEY=sk-your-openai-api-key
+
+4. **Save the `.env` file** and restart the application. Once configured, the AI-powered features should now work. If you encounter any issues or reach the free usage limits, consider upgrading to a paid plan for uninterrupted functionality.
+
