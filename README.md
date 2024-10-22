@@ -149,9 +149,45 @@ To run the complete project, follow the steps for both the frontend and backend:
    ```bash
    http://localhost:PORT
    (The port number can be anything you set up for your backend)
+   ### Database Setup
 
-   
 
 
-   
+### MySQL Setup
+
+This project uses **MySQL** for the database and **Knex.js** for managing migrations and seeds.
+
+Follow these steps to set up **MySQL** for the project, including creating a database, user, and selecting the correct database.
+
+1. ***Install MySQL***
+If you haven't installed **MySQL** yet, download and install it from [MySQL’s official site](https://dev.mysql.com/downloads/).
+
+ 2. ***Open MySQL Command Line or Workbench***
+Once MySQL is installed, you can either open **MySQL Workbench** or access the MySQL command line by running:
+    ```bash
+    mysql -u root -p
+
+You'll be prompted for your MySQL root password
+
+ 3. ***Create a New MySQL Database***
+To create a new database for your project, run the following SQL command:
+    ```bash
+    CREATE DATABASE journeynook;
+This will create a database named journeynook.
+
+4. ***Select the Database***
+Once the database is created, select it to start using it:
+    ```bash
+    USE journeynook;
+5. ***Update Your .env File***
+   Make sure the database name, user, and password match what you created in MySQL.
+
+6. ***Run Migrations:***
+   ```bash
+   npx knex migrate:latest
+7. ***Seed the Database:***
+   ```bash
+   npx knex seed:run
+
+
    
