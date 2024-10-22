@@ -92,19 +92,22 @@ OpenAI API: The OpenAI API powers the AI-driven itinerary generation feature in 
 ### API Routes:
 The JourneyNook backend provides several API routes to access cities, attractions, and generate trip itineraries. Below is an overview of the available API endpoints and their functions.
  ***Base URL***
- - For local development: http://localhost:<PORT>
- - Replace <PORT> with the value from your .env file, typically 8080.
+ - For local development: http://localhost:PORT
+ - Replace PORT with the value from your .env file, typically 8080.
+   
 ***Available API Endpoints***
-   1. ***Cities API (/cities)***
+ 1. ***Cities API (/cities)***
       - GET /cities: Fetches a list of all cities.
       - GET /cities/:cityId: Fetches details for a specific city using the cityId.
       - GET /cities/:cityId/attractions: Fetches all attractions for a specific city by cityId.
-    2. ***Attractions API (/attractions)***
+        
+2. ***Attractions API (/attractions)***
       - GET /attractions/:attractionId: Fetches details of a specific attraction by attractionId.
-    3. ***Itinerary API  (/itinerary)***
+      
+ 3. ***Itinerary API  (/itinerary)***
       - POST /itinerary: Generates a trip itinerary based on the input data (days, budget, number of people, and trip type).
-            - Request Body: Include the necessary data for generating an itinerary (days, budget, number of people, and trip type).
-            - Middleware: Input data is validated by tripInputValidator.
+      - Request Body: Include the necessary data for generating an itinerary (days, budget, number of people, and trip type).
+      - Middleware: Input data is validated by tripInputValidator.
 
 ## Full Project Setup 
 **Note:**  
