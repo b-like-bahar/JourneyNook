@@ -14,7 +14,7 @@ Planning a trip can be overwhelming, especially when trying to organize activiti
 ### User Profile
 
 - Travel enthusiasts who are planning a trip and need a structured way to organize their daily activities.
--Casual explorers wanting suggestions for landmarks and travel tips in various cities.
+- Casual explorers wanting suggestions for landmarks and travel tips in various cities.
 
 ### Features
 
@@ -90,6 +90,10 @@ A loading spinner that appears while the app (AI) generates the itinerary based 
 OpenAI API: The OpenAI API powers the AI-driven itinerary generation feature in JourneyNook.
 
 ## Full Project Setup 
+**Note:**  
+This repository initially contained both the frontend and backend code, so you may see commits related to both parts in the history. However, to simplify deployment, the frontend and backend have been separated into their own repositories.
+
+
 To run the complete project, follow the steps for both the frontend and backend:
 ### Frontend Setup
 
@@ -106,7 +110,7 @@ To run the complete project, follow the steps for both the frontend and backend:
 
    Copy the `.env.example` file and rename it to `.env`.
 
-   Then, open the `.env` file and update the following variable with the correct value:
+   Then, open the `.env` file and update the following variable with the correct value for example:
 
    ```bash
    VITE_API_URL=http://localhost:8080
@@ -116,6 +120,38 @@ To run the complete project, follow the steps for both the frontend and backend:
    ```bash
     npm run dev
    
+### Backend Setup
+1. **Clone this repository:**
+   ```bash
+   https://github.com/b-like-bahar/JourneyNook-api.git
+2. **Install dependencies:**
+      ```bash
+   npm install
+3. **Set up environment variables:**  
+   The project requires a `.env` file for configuration. You can create this file based on the `.env.example` provided in the repository. 
+
+   Copy the `.env.example` file and rename it to `.env`.
+
+   Then, open the `.env` file and update the following variable with your own values:
+
+    - DB_LOCAL_DBNAME: The name of your local database (e.g., journeynook).
+    - DB_LOCAL_USER: The username for your database (e.g., root).
+    - DB_LOCAL_PASSWORD: The password for your database user.
+    - CORS_ORIGIN: The URLs that can access the backend API, including your local frontend (e.g., http://localhost:5173) and/or the 
+         production URL (https://journeynook.netlify.app).
+    - OPENAI_API_KEY: Your OpenAI API key for integrating OpenAI services.
+
+3. **Run the backend server:**
+   ```bash
+   npm start
+4. **Access the API:**
+   Once the server is running, you can access the backend API at:
+   ```bash
+   http://localhost:PORT
+   (The port number can be anything you set up for your backend)
+
+   
+
 
    
    
